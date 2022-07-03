@@ -11,7 +11,10 @@ void createSchemes(){
     for (int i =0 ;i< N;i++)
     {
 
-    	printf("\tEnter schemeName at index :[%d] ",i);
+    	  printf("\tEnter scheme ID :[%d] ",i);
+        scanf("%d",&schemeObject.schemeId);
+        printf("\n");
+    	  printf("\tEnter schemeName at index :[%d] ",i);
         scanf("%s",schemeObject.schemeName);
         clear_buffer();
         printf("\n");
@@ -36,6 +39,54 @@ void getSchemeDetails()
     ReadAll_scheme_fromFile(scheme,&noOfSchemeObject);
     printf("********************End of Read ***************");
 }
+void updateScheme()
+{
+    scheme schemes;
+    int id;
+    printf("Enter scheme id to find:"); scanf("%d",&id);
+    scheme_bdb_readById(&schemes,id);
+    
+    
+    printf("\n\n\nThe searched scheme:\n");    
+	
+	  printf("Scheme ID: %d\n", schemes.schemeId); 
+    printf("Scheme Name: %s\n", schemes.schemeName);
+    printf("Maximum loan amount: %lf\n",schemes.maxLoanAmt);
+    printf("Rate of interest: %f\n", schemes.interestRate);
+    printf("Tenure: %d\n",schemes.tenure);
+    
+    printf("Enter scheme Name (new) "); clear_buffer(); scanf("%[^\n]s", schemes.schemeName);
+    printf("Enter maximum loan amount (new)"); scanf("%lf", &schemes.maxLoanAmt);
+    printf("Enter rate of interest (new)"); scanf("%f",&schemes.interestRate);
+    printf("Enter tenure (new)"); scanf("%d",&schemes.tenure);
+    
+    scheme_bdb_update(schemes);
+    
+    printf("Scheme is updated successfully.\n");
+}
+void deleteScheme()
+{
+    scheme schemes;
+    int id;
+    printf("Enter scheme id to find:"); scanf("%d",&id);
+    scheme_bdb_readById(&schemes,id);
+    
+    
+    printf("\n\n\nThe searched scheme:\n");    
+	
+	  printf("Scheme ID: %d\n", schemes.schemeId); 
+    printf("Scheme Name: %s\n", schemes.schemeName);
+    printf("Maximum loan amount: %lf\n",schemes.maxLoanAmt);
+    printf("Rate of interest: %f\n", schemes.interestRate);
+    printf("Tenure: %d\n",schemes.tenure);
+   
+    char ch; 
+    printf("Are you sure to delete(y/n)?"); clear_buffer(); scanf("%c",&ch);
+    if('y' == ch || 'Y' == ch){ 
+    	scheme_bdb_delete(schemes);
+    	printf("Scheme is deleted successfully.\n");
+    }
+}
 void manage_scheme()
 {
     int menu;
@@ -47,14 +98,14 @@ void manage_scheme()
             createSchemes();
         }
         else if(2 == menu){
-        updateScheme();
+            updateScheme();
         }
         else if(3 ==  menu)
         {
-          getSchemeDetails();
+            getSchemeDetails();
         }
         else if(4 == menu){
-        deleteScheme();
+            deleteScheme();
         }
     }while(1 == menu || 2 == menu || 3 == menu);
 }   
