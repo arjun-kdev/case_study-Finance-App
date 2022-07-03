@@ -2,6 +2,7 @@
 
 struct scheme_
 {
+int schemeId;
 char schemeName[120];
 double maxLoanAmt;
 float interestRate;

@@ -40,15 +40,21 @@ void manage_scheme()
 {
     int menu;
     do {
-        printf("Choice (1-Add Scheme, 2-Update Loan, 3-Display Schemes, 0-Exit):\n");
+        printf("Choice (1-Add Scheme, 2-Update Scheme, 3-Display Schemes, 4-Delete Scheme, 0-Exit):\n");
         scanf("%d",&menu);
         
         if(1 == menu){
             createSchemes();
         }
+        else if(2 == menu){
+        updateScheme();
+        }
         else if(3 ==  menu)
         {
           getSchemeDetails();
+        }
+        else if(4 == menu){
+        deleteScheme();
         }
     }while(1 == menu || 2 == menu || 3 == menu);
 }   
