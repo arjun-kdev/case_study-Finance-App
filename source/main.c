@@ -53,6 +53,7 @@ void addEmployee(){
     scanf("%s",employeeObject.phoneNumber);
     printf("\n"); 
     printf("\tEnter Gender (M/F/T) : ");
+    clear_buffer();
     scanf("%c",&employeeObject.gender);
     printf("\n");
     printf("\tEnter e-mail : ");
@@ -82,21 +83,18 @@ void addCustomer(){
     scanf("%s",customerObject.phoneNumber);
     printf("\n"); 
     printf("\tEnter Gender (M/F/T) : ");
+    clear_buffer();
     scanf("%c",&customerObject.gender);
-    printf("\n");
-    
+    printf("\n"); 
     printf("\tEnter e-mail : ");
     scanf("%s",customerObject.email);
-    printf("\n");
-    
+    printf("\n"); 
     printf("\tEnter Aadhar-ID : ");
     scanf("%s",customerObject.aadhaarID);
     printf("\n");
-    
     printf("\tEnter PAN number : ");
     scanf("%s",customerObject.panCard);
     printf("\n");
-    
     printf("\tEnter Password : ");
     scanf("%s",customerObject.password);
     printf("\n");
@@ -230,7 +228,6 @@ int main()
         }
         else if(8 == menu){
          readAllEmployees();
-        addEmployee();
         }
         
     }while(1 == menu || 2 == menu || 3 == menu || 4 == menu|| 5 == menu|| 6 == menu|| 7 == menu|| 8 == menu);
