@@ -12,23 +12,23 @@ typedef struct scheme_ scheme;
 
 typedef struct _DOB_t
 {
-	int Day;
-	int Month;
-	int Year;
+	int day;
+	int month;
+	int year;
 }DOB_t;
 
 struct customer_
 {
-	char AccHolderName[128];
-	char PhoneNumber[16];
-	char Gender;
-	char Email[128];
-	char AadhaarID[16];
-	char PanCard[16];
-	char CustomerID[32];
-	char Password[32];
-	int  PreferredAccountType;
-	char Address[256];
+	char accHolderName[128];
+	char phoneNumber[16];
+	char gender;
+	char email[128];
+	char aadhaarID[16];
+	char panCard[16];
+	char customerID[32];
+	char password[32];
+	int  preferredAccountType;
+	char address[256];
   	DOB_t DOB;
   	scheme appliedScheme;
 }__attribute__((__packed__));
@@ -39,10 +39,10 @@ struct employee_
 {
 	char empId[10];
 	char employeeName[128];
-	char PhoneNumber[16];
-	char Gender;
-	char Email[128];
-	char Password[32];
+	char phoneNumber[16];
+	char gender;
+	char email[128];
+	char password[32];
     	DOB_t DOB;
 }__attribute__((__packed__));
 
