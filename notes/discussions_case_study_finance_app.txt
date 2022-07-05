@@ -78,8 +78,9 @@ Trishala
 
 
 Pratik
-1.create employee
-2.apply for scheme
+
+1.Updation of employee
+2.updation  of customer account.
 
 Arjun
 
@@ -88,6 +89,58 @@ folders -> source, header(.h files),objects(), Build(final build), make file(.mk
 
 2.update tenure (attributes of applied scheme)
 3.create/update profile
+1.create employee
+2.create customer.
+3.read employee 
+4.read custome.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ July 5 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.Login for Employee 
+2.Login for Customer.
+3. Registration 
+
+	Registration : 
+		- create customer.
+
+	Cutsomer : ->loggedin(username ,passowrd)
+	 .apply scheme.[ select sheme(scheid)]
+	 .update the loan [loan id]
+	 .status for loan.
+
+// Scheme -
+catlog - all information(all diffrenet loans)schem_t
+customer will aplly one of loan
+
+struct loan{
+	int shemeid;
+	int customerid;
+	int status;// Pending, Inprocess,Approved,Processed
+};
+custome of id 10 is logged in .
+
+searchfrom loan.db (customer id matched will show status )
+
+customer options:
+	1.Update profile.
+	2.update loan.
+	3.apply for loan
+	4.status loan.
+	5.withdraw loan application.
+
+^^^^^^^^^^^^Tasks for 5July^^^^^^^^^^^^^^^^^^^^^^^^^^^
+login : for customer.and showoptions.-Trishala
+login : for employee and showoptions. - Arjun
+
+do login validation for login and customer. trishala & arjun
+
+	1.Update profile.- Pratik
+	2.update loan.	-Pratik
+	3.apply for loan	- Vishal 
+	4.status loan.		- Vishal
+	5.withdraw loan application.- Eshwar
+
+Registration for employee (Already done only intgration) - Eshwar
+Registartion for customer(Already done only intgration)- Eshwar
 
 
 

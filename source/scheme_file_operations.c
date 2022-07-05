@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<string.h>
 
-void add_scheme_infoFile(scheme *schemeAddr)
+void add_scheme_intoFile(scheme *schemeAddr)
 {
     char fileName[] = "scheme_db.dat";
     FILE* out = fopen(fileName,"ab");
@@ -15,22 +15,8 @@ void add_scheme_infoFile(scheme *schemeAddr)
 
     fclose(out);
 }
-void showSchemeObjects(scheme schemObject,int Index)
-{
-        printf("\n %d)\n",Index);
-        printf("\tScheme ID :%d",schemObject.schemeId);
-        printf("\n");
-    	  printf("\tScheme Name :%s",schemObject.schemeName);
-        printf("\n");
-        printf("\tMax loan Amount :%lf",schemObject.maxLoanAmt);
-        printf("\n");
-        printf("\tinterestRate :%f",schemObject.interestRate);
-        printf("\n");  
-        printf("\ttenure :%d",schemObject.tenure);
-        printf("\n");  
-                 
-}
-void ReadAll_scheme_fromFile(scheme *schemeList,int *NoOfSchemes){
+
+void scheme_bdb_readAll(scheme *schemeList,int *noOfObjects){
     int I=0;
     scheme schemeObj;
     
@@ -42,10 +28,9 @@ void ReadAll_scheme_fromFile(scheme *schemeList,int *NoOfSchemes){
     }
     while(fread(&schemeObj,1,sizeof(scheme),in)){
        schemeList[I] = schemeObj;
-       showSchemeObjects(schemeList[I],I);
-       I++;
+        I++;
     }
-    *NoOfSchemes = I;
+    *noOfObjects = I;
     fclose(in);
 }
 void scheme_bdb_readById(scheme* schemeAddr, int schemeIdAddr)

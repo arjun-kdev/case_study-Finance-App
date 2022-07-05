@@ -48,7 +48,7 @@ void showEmployeeObjects(employee employeeObject,int Index)
 		    employeeObject.DOB.year);
         printf("\n");   
 }
-void ReadAll_employee_fromFile(employee *employeeList,int *employeeCount){
+void employee_bdb_readall(employee *employeeList,int *employeeCount){
     int I=0;
     employee employeeObj;
     
@@ -88,7 +88,7 @@ void showCustomerObjects(customer customerObject,int Index)
 		    customerObject.DOB.year);
         printf("\n");  
 }
-void ReadAll_customer_fromFile(customer *customerList,int *customerCount){
+void customer_bdb_readall(customer *customerList,int *customerCount){
     int I=0;
     customer customerObj;
     
