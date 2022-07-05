@@ -1,6 +1,9 @@
 #include "scheme_file_operations.h"
 #include "employee_file_operations.h"
+#include "customer_file_operations.h"
 #include "ui_scheme.h"
+#include "ui_employee.h"
+#include "ui_customer.h"
 #include "login_info.h"
 #include "util.h"
 #include <stdio.h>
@@ -114,7 +117,7 @@ void addCustomer()
            &customerObject.DOB.day,
            &customerObject.DOB.month,
            &customerObject.DOB.year);
-        add_customer_intoFile(&customerObject);
+    add_customer_intoFile(&customerObject);
 }
 
 void readAllCustomers()
@@ -122,6 +125,7 @@ void readAllCustomers()
     customer customer[256] = {};
     int noOfcustomerObject = 0;
     customer_bdb_readall(customer, &noOfcustomerObject);
+    displayAllCustomerObjects(customer, noOfcustomerObject);
 }
 
 void readAllEmployees()
@@ -129,6 +133,7 @@ void readAllEmployees()
     employee employee[256] = {};
     int noOfemployeeObject = 0;
     employee_bdb_readall(employee, &noOfemployeeObject);
+    displayAllEmployeeObjects(employee, noOfemployeeObject);
 }
 
 void updateScheme()
@@ -216,7 +221,7 @@ void displayAdminMenu()
     int menu;
     do
     {
-        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,4-Add Customer, 5-Update Customer,6- Add Employee,7-Read all customers,8- Read all employees, 0-Exit):\n");
+        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,\n4-Add Customer, 5-Update Customer,6- Add Employee,\n7-Read all customers,8- Read all employees, 0-Exit):\n");
         scanf("%d", &menu);
 
         if (1 == menu)
@@ -245,29 +250,30 @@ void displayAdminMenu()
         }
 
     } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu || 6 == menu || 7 == menu || 8 == menu);
-
-
+}
+void validate(char username[], char pass[])
+{
 }
 int main()
 {
 
     int menu;
-    
+
     login loginAddr;
     printf("Press R for registration And L for login");
     do
     {
         printf("\n\tChoice (\nR : registration,l:Login ");
         scanf("%d", &menu);
-        if(menu == 'L')
+        if (menu == 'L')
         {
             printf("\n\temail :");
-            scanf("%s",loginAddr.username);
+            scanf("%s", loginAddr.username);
             printf("\n\tpassword :");
-            scanf("%s",loginAddr.pass);
-            validate(loginAddr.username,loginAddr.pass);
+            scanf("%s", loginAddr.pass);
+            validate(loginAddr.username, loginAddr.pass);
         }
-    }while(menu =='R' || menu  == ' L');
-    
+    } while (menu == 'R' || menu == 'L');
+
     return EXIT_SUCCESS;
 }
