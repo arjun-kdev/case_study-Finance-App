@@ -138,65 +138,12 @@ void readAllEmployees()
     displayAllEmployeeObjects(employee,noOfemployeeObject);
 }
 
-void updateScheme()
-{
-    scheme schemes;
-    int id;
-    printf("Enter scheme id to find:");
-    scanf("%d", &id);
-    scheme_bdb_readById(&schemes, id);
-
-    printf("\n\n\nThe searched scheme:\n");
-
-    printf("Scheme ID: %d\n", schemes.schemeId);
-    printf("Scheme Name: %s\n", schemes.schemeName);
-    printf("Maximum loan amount: %lf\n", schemes.maxLoanAmt);
-    printf("Rate of interest: %f\n", schemes.interestRate);
-    printf("Tenure: %d\n", schemes.tenure);
-
-    printf("Enter scheme Name (new) ");
-    clear_buffer();
-    scanf("%[^\n]s", schemes.schemeName);
-    printf("Enter maximum loan amount (new)");
-    scanf("%lf", &schemes.maxLoanAmt);
-    printf("Enter rate of interest (new)");
-    scanf("%f", &schemes.interestRate);
-    printf("Enter tenure (new)");
-    scanf("%d", &schemes.tenure);
-    scheme_bdb_update(schemes);
-
-    printf("Scheme is updated successfully.\n");
-}
-void deleteScheme()
-{
-    scheme schemes;
-    int id;
-    printf("Enter scheme id to find:");
-    scanf("%d", &id);
-    scheme_bdb_readById(&schemes, id);
-    printf("\n\n\nThe searched scheme:\n");
-    printf("Scheme ID: %d\n", schemes.schemeId);
-    printf("Scheme Name: %s\n", schemes.schemeName);
-    printf("Maximum loan amount: %lf\n", schemes.maxLoanAmt);
-    printf("Rate of interest: %f\n", schemes.interestRate);
-    printf("Tenure: %d\n", schemes.tenure);
-
-    char ch;
-    printf("Are you sure to delete(y/n)?");
-    clear_buffer();
-    scanf("%c", &ch);
-    if ('y' == ch || 'Y' == ch)
-    {
-        scheme_bdb_delete(schemes);
-        printf("Scheme is deleted successfully.\n");
-    }
-}
 void manage_scheme()
 {
     int menu;
     do
     {
-        printf("Choice (1-Add Scheme, 2-Update Scheme, 3-Display Schemes, 4-Delete Scheme, 0-Exit):\n");
+        printf("\n\tChoice (1-Add Scheme, 2-Update Scheme, 3-Display Schemes, 4-Delete Scheme, 0-Exit): ");
         scanf("%d", &menu);
 
         if (1 == menu)
@@ -223,7 +170,7 @@ void displayAdminMenu()
     int menu;
     do
     {
-        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,\n4-Add Customer, 5-Update Customer,6- Add Employee,\n7-Read all customers,8- Read all employees, 0-Exit):\n");
+        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,\n\t4-Add Customer, 5-Update Customer,6- Add Employee,\n\t7-Read all customers,8- Read all employees, 0-Exit/logout): ");
         scanf("%d", &menu);
 
         if (1 == menu)
@@ -253,11 +200,13 @@ void displayAdminMenu()
 
     } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu || 6 == menu || 7 == menu || 8 == menu);
 }
+
 int main()
 {
 
     int menu;
     login loginAddr;
+
     do
     {
         printf("\n\tEnter Choice (\n\t1 : registration as customer \n\t2:Login as customer \n\t3:Login as employee\n\t0:exit ): ");
@@ -279,6 +228,6 @@ int main()
             validate(loginAddr.username,loginAddr.pass);
         }
     }while(menu ==1 || menu  == 2 || menu == 3);
-    
+
     return EXIT_SUCCESS;
 }
