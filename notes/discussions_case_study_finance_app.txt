@@ -111,11 +111,25 @@ folders -> source, header(.h files),objects(), Build(final build), make file(.mk
 catlog - all information(all diffrenet loans)schem_t
 customer will aplly one of loan
 
-struct loan{
+struct loanaplication
+{
 	int shemeid;
 	int customerid;
-	int status;// Pending, Inprocess,Approved,Processed
+	int tenure ;12 64 
+	int amount /20000
+	int emi ; 
+	int loaapplicationid;
+	int accountno; 
+	int ifsccode	1 		2		 3			4				5	
+	int status:4;// Pending, Inprocess,Approved,full Processed,rejected.
 };
+
+struct loan
+{
+	int loanaplicationid;
+	int dispesredamount;
+	date date;
+}
 custome of id 10 is logged in .
 
 searchfrom loan.db (customer id matched will show status )
@@ -134,10 +148,11 @@ login : for employee and showoptions. - Arjun
 do login validation for login and customer. trishala & arjun
 
 	1.Update profile.- Pratik
-	2.update loan.	-Pratik
-	3.apply for loan	- Vishal 
-	4.status loan.		- Vishal
-	5.withdraw loan application.- Eshwar
+	2.update loan.	 - Pratik
+	3.apply for loan - Vishal 
+	4.status loan.	 - Vishal
+	
+5.withdraw loan application.- Eshwar
 
 Registration for employee (Already done only intgration) - Eshwar
 Registartion for customer(Already done only intgration)- Eshwar

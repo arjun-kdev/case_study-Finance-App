@@ -1,7 +1,6 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/quest/Documents/5July/case_study-Finance-App'
+make: Leaving directory '/home/quest/Documents/5July/case_study-Finance-App'
  
 make: *** No targets specified and no makefile found.  Stop.
 
-make: Leaving directory '/home/quest/Documents/5July/case_study-Finance-App'
- 

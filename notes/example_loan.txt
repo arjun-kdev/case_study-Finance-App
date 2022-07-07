@@ -3,8 +3,8 @@ case study:
 		- Scheme "Education Loan", "Personal Loan", "Home Loan"
 		- Customer 
 			Portal 
-				Register 
-				Login 
+			//	Register 
+			//	Login 
 					Apply for Loan (Loan Application)
 					View Application 
 		- Employee 

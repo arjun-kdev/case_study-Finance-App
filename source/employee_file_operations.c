@@ -76,7 +76,9 @@ void showCustomerObjects(customer customerObject,int Index)
         printf("\tGender :%c",customerObject.gender);
         printf("\n");
         printf("\tEmail :%s",customerObject.email);
-        printf("\n");  
+        printf("\n"); 
+         printf("\tPassword :%s",customerObject.password);
+        printf("\n"); 
         printf("\tAddress :%s",customerObject.address);
         printf("\n");  
         printf("\tAccountType :%d",customerObject.preferredAccountType);

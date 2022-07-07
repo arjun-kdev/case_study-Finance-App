@@ -6,7 +6,7 @@ int schemeId;
 char schemeName[120];
 double maxLoanAmt;
 float interestRate;
-int tenure;
+int tenure;// 45 months
 }; 
 typedef struct scheme_ scheme;
 

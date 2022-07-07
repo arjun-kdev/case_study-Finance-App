@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul  5 16:08:40 2022
+# Make data base, printed on Thu Jul  7 09:26:22 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:33910
+JOURNAL_STREAM = 8:34411
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -69,15 +69,15 @@ USERNAME = quest
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=d8ade19cc2aaa8b1ed1b741762c40c23
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=1d846f8a571bf63f9a7b3b9262c65440
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1204
+MANAGERPID = 1230
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_CWD = /home/quest/Documents/5July/case_study-Finance-App/source
+VSCODE_CWD = /home/quest/Documents/6July/case_study-Finance-App
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/99/usr/share/glib-2.0/schemas
 # default
@@ -87,7 +87,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/quest-VirtualBox:@/tmp/.ICE-unix/1451,unix/quest-VirtualBox:/tmp/.ICE-unix/1451
+SESSION_MANAGER = local/quest-VirtualBox:@/tmp/.ICE-unix/1476,unix/quest-VirtualBox:/tmp/.ICE-unix/1476
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -105,7 +105,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 799e95db8de542f1a0023c4064264cad
+INVOCATION_ID = 300a9b2002f7469092b40a98b247095a
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/99/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -129,7 +129,7 @@ PWD = /home/quest/Documents/5July/case_study-Finance-App
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1412
+SSH_AGENT_PID = 1438
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -181,7 +181,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5225b792-680a-46ab-b918-f1b885d0132d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4bd906a2-d879-4088-80c9-007ef03cb78f.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -197,7 +197,7 @@ XDG_CURRENT_DESKTOP = Unity
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/quest/Documents/5July/case_study-Finance-App
+OLDPWD = /home/quest/Documents/6July
 # default
 .VARIABLES := 
 # automatic
@@ -233,11 +233,11 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/213e81c6_0417_4abd_b87f_2ecb1826873d
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/00156d23_1909_4bee_b450_633ff3da6d4e
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.108
+GNOME_TERMINAL_SERVICE = :1.99
 # default
 SUFFIXES := 
 # environment
@@ -255,9 +255,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2751
+VSCODE_PID = 2422
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=d8ade19cc2aaa8b1ed1b741762c40c23
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=1d846f8a571bf63f9a7b3b9262c65440
 # variable set hash-table stats:
 # Load=123/1024=12%, Rehash=0, Collisions=15/145=10%
 
@@ -326,6 +326,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Tue Jul  5 16:08:40 2022
+# Finished Make data base on Thu Jul  7 09:26:22 2022
 
  
