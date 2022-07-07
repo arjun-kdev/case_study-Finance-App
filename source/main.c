@@ -1,6 +1,7 @@
 #include "scheme_file_operations.h"
 #include "employee_file_operations.h"
 #include "customer_file_operations.h"
+#include "login_file_operations.h"
 #include "ui_scheme.h"
 #include "ui_employee.h"
 #include "ui_customer.h"
@@ -8,6 +9,7 @@
 #include "util.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void createSchemes()
 {
@@ -117,7 +119,7 @@ void addCustomer()
            &customerObject.DOB.day,
            &customerObject.DOB.month,
            &customerObject.DOB.year);
-    add_customer_intoFile(&customerObject);
+        add_customer_intoFile(&customerObject);
 }
 
 void readAllCustomers()
@@ -125,7 +127,7 @@ void readAllCustomers()
     customer customer[256] = {};
     int noOfcustomerObject = 0;
     customer_bdb_readall(customer, &noOfcustomerObject);
-    displayAllCustomerObjects(customer, noOfcustomerObject);
+    displayAllCustomerObjects(customer,noOfcustomerObject);
 }
 
 void readAllEmployees()
@@ -133,7 +135,7 @@ void readAllEmployees()
     employee employee[256] = {};
     int noOfemployeeObject = 0;
     employee_bdb_readall(employee, &noOfemployeeObject);
-    displayAllEmployeeObjects(employee, noOfemployeeObject);
+    displayAllEmployeeObjects(employee,noOfemployeeObject);
 }
 
 void updateScheme()
@@ -250,30 +252,54 @@ void displayAdminMenu()
         }
 
     } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu || 6 == menu || 7 == menu || 8 == menu);
+
+
 }
 void validate(char username[], char pass[])
 {
+    //int elements_in_password = sizeof(pass) / sizeof(pass[0]);
+    if (strstr(username, "@"))
+    {
+        if (strlen(pass) >= 8)
+        {
+        	int res = loginCheck(username,pass);
+        	if(res==1){
+            	printf("Login successful..!!");
+            }else if(res==-1){
+				printf("wrong password..!!");
+        	}else if(res==-2){
+        		printf("Wrong mail Id..!!");
+        	}
+    	}else
+        {
+            printf("Password minimum 8 characters..!!") ;
+        }
+    }
+    else
+    {
+        printf("Invaild email..!!") ;
+    }
 }
 int main()
 {
 
-    int menu;
-
+    char menu;
+    
     login loginAddr;
-    printf("Press R for registration And L for login");
+    printf("\tPress R for registration and L for Login");
     do
     {
-        printf("\n\tChoice (\nR : registration,l:Login ");
-        scanf("%d", &menu);
-        if (menu == 'L')
+        printf("\n\tChoice (R : registration : \n\tL:Login : ");
+        scanf("%c", &menu);
+        if(menu =='L')
         {
             printf("\n\temail :");
-            scanf("%s", loginAddr.username);
+            scanf("%s",loginAddr.username);
             printf("\n\tpassword :");
-            scanf("%s", loginAddr.pass);
-            validate(loginAddr.username, loginAddr.pass);
+            scanf("%s",loginAddr.pass);
+            validate(loginAddr.username,loginAddr.pass);
         }
-    } while (menu == 'R' || menu == 'L');
-
+    }while(menu	== 'L');
+    
     return EXIT_SUCCESS;
 }
