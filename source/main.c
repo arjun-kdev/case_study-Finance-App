@@ -1,11 +1,15 @@
 #include "scheme_file_operations.h"
 #include "employee_file_operations.h"
 #include"customer_bdb_file_operations.h"
+#include "customer_file_operations.h"
+#include "login_file_operations.h"
 #include "ui_scheme.h"
-#include "login_info.h"
+#include "ui_employee.h"
+#include "ui_customer.h"
 #include "util.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void createSchemes()
 {
@@ -123,6 +127,7 @@ void readAllCustomers()
     customer customer[256] = {};
     int noOfcustomerObject = 0;
     customer_bdb_readall(customer, &noOfcustomerObject);
+    displayAllCustomerObjects(customer,noOfcustomerObject);
 }
 
 void readAllEmployees()
@@ -130,6 +135,7 @@ void readAllEmployees()
     employee employee[256] = {};
     int noOfemployeeObject = 0;
     employee_bdb_readall(employee, &noOfemployeeObject);
+    displayAllEmployeeObjects(employee,noOfemployeeObject);
 }
 
 void updateScheme()
@@ -217,7 +223,7 @@ void displayAdminMenu()
     int menu;
     do
     {
-        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,4-Add Customer, 5-Update Customer,6- Add Employee,7-Read all customers,8- Read all employees, 0-Exit):\n");
+        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,\n4-Add Customer, 5-Update Customer,6- Add Employee,\n7-Read all customers,8- Read all employees, 0-Exit):\n");
         scanf("%d", &menu);
 
         if (1 == menu)
@@ -247,16 +253,6 @@ void displayAdminMenu()
 
     } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu || 6 == menu || 7 == menu || 8 == menu);
 }
-
-void displaycustomerchoice(char *customerId)
-{
-    int menu;
-    do
-    {
-        printf("\n\tChoice (\n\t1-Update profile\n\t2-apply for Loan\n\t3-read all loan types\n\t4-update loan application\n\t5-Status of loan \n\t6-withdraw loan application\n\t0-Exit):\n\n");
-        scanf("%d", &menu);
-    } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu );
-}
 int main()
 {
 
@@ -272,22 +268,15 @@ int main()
         }
         else if(menu == 2)
         {
-            char customerId[32];
-            printf("\n\n\t******Enter Login credentails *******\n\n");
+            dologin_customer(&loginAddr);
+        }
+        else if(menu  == 3)
+        {
             printf("\n\temail :");
             scanf("%s",loginAddr.username);
             printf("\n\tpassword :");
             scanf("%s",loginAddr.pass);
-            int isValidLogin = validatelogin(loginAddr.username,loginAddr.pass,customerId);
-            if(isValidLogin)
-            {    
-                printf("\n\n\t******Login successfull *******\n\n");
-                displaycustomerchoice(customerId);
-            }else
-            {
-                printf("\n\tplease retry again\n\n");
-                printf("\n\n\t******Login Unscessfull *******\n\n");
-            }
+            validate(loginAddr.username,loginAddr.pass);
         }
     }while(menu ==1 || menu  == 2 || menu == 3);
     

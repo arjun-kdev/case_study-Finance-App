@@ -3,32 +3,33 @@
 #include"finance_t.h"
 #include"customer_bdb_file_operations.h"
 
-int validatelogin(char *username ,char *pass,char customerId[])
-{ 
-    int isvalidLogin = 0;
-    customer sch;
+void add_customer_intoFile(customer *customerAddr)
+{
     char fileName[] = "customer_db.dat";
-    
-    FILE* in = fopen(fileName,"r");
-    
-    if(in == NULL){
-        printf("\n\t(in)FILE ERROR.\n");
-        return -1;
+    FILE* out = fopen(fileName,"ab");
+    if(out == NULL){
+        printf("FILE ERROR.\n");
+        return;
     }
     
-    
-    while(fread(&sch,1,sizeof(customer),in)){
-     
-        if(strcmp(sch.email,username) == 0)
-        {          
+    fwrite(customerAddr,1,sizeof(customer),out);
 
-             if(strcmp(sch.password,pass) == 0)
-             {
-                strcpy(customerId,sch.customerID);
-                isvalidLogin = 1;
-             }
-        }       
+    fclose(out);
+}
+void customer_bdb_readall(customer *customerList,int *customerCount){
+    int I=0;
+    customer customerObj;
+    
+    char fileName[] = "customer_db.dat";
+    FILE* in = fopen(fileName,"rb");
+    if(in == NULL){
+        printf("FILE ERROR.\n");
+        return;
     }
+    while(fread(&customerObj,1,sizeof(customer),in)){
+       customerList[I] = customerObj;
+       I++;
+    }
+    *customerCount = I;
     fclose(in);
-    return isvalidLogin;
 }

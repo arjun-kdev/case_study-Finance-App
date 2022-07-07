@@ -7,6 +7,7 @@ debug:
 build:
 	gcc *.o -o finanApp
 	cp finanApp ../build
+	rm *.o 
 clean:
 	rm -r *.o finanApp
 	
