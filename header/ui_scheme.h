@@ -5,3 +5,4 @@ void displayAllSchemeObjects(scheme *schemeAddr, int objectCount);
 void displaySchemeObject(scheme schemObject, int Index);
 void updateScheme();
 void deleteScheme();
+void manage_scheme();

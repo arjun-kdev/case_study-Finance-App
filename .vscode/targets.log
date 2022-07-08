@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul  7 09:26:22 2022
+# Make data base, printed on Fri Jul  8 17:24:52 2022
 
 # Variables
 
@@ -28,8 +28,6 @@ XDG_SESSION_CLASS = user
 SNAP_COMMON = /var/snap/code/common
 # environment
 XDG_SESSION_TYPE = x11
-# environment
-VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -41,17 +39,17 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/quest/Documents/5July/case_study-Finance-App
+CURDIR := /home/quest/Documents/8july/case_study-Finance-App
 # makefile
 SHELL = /bin/sh
 # environment
-SNAP_DATA = /var/snap/code/99
+SNAP_DATA = /var/snap/code/100
 # environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:34411
+JOURNAL_STREAM = 8:34657
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -69,17 +67,15 @@ USERNAME = quest
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=1d846f8a571bf63f9a7b3b9262c65440
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=b088526c7d8f9bb5e9f1132a62c7c827
 # environment
-VSCODE_VERBOSE_LOGGING = true
-# environment
-MANAGERPID = 1230
+MANAGERPID = 1239
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_CWD = /home/quest/Documents/6July/case_study-Finance-App
+VSCODE_CWD = /home/quest/Documents
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/99/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/100/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -87,27 +83,25 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/quest-VirtualBox:@/tmp/.ICE-unix/1476,unix/quest-VirtualBox:/tmp/.ICE-unix/1476
+SESSION_MANAGER = local/quest-VirtualBox:@/tmp/.ICE-unix/1487,unix/quest-VirtualBox:/tmp/.ICE-unix/1487
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/quest/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-SNAP = /snap/code/99
+SNAP = /snap/code/100
 # environment
-SNAP_VERSION = 30d9c6cd
+SNAP_VERSION = 92d25e35
 # environment
 XDG_MENU_PREFIX = gnome-
-# environment
-VSCODE_LOG_STACK = false
 # environment
 DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 300a9b2002f7469092b40a98b247095a
+INVOCATION_ID = 57e35874770c40ae83543ff844032410
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/99/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/100/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -121,15 +115,13 @@ SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
 DISPLAY = :0
 # environment
-VSCODE_PIPE_LOGGING = true
-# environment
 SNAP_INSTANCE_KEY = 
 # environment
-PWD = /home/quest/Documents/5July/case_study-Finance-App
+PWD = /home/quest/Documents/8july/case_study-Finance-App
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1438
+SSH_AGENT_PID = 1449
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -143,7 +135,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/quest/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
+VSCODE_CODE_CACHE_PATH = /home/quest/.config/Code/CachedData/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9
 # environment
 LOGNAME = quest
 # environment
@@ -175,19 +167,17 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SNAP_USER_DATA = /home/quest/snap/code/99
+SNAP_USER_DATA = /home/quest/snap/code/100
 # environment
 SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4bd906a2-d879-4088-80c9-007ef03cb78f.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = quest
 # environment
-SNAP_REVISION = 99
+SNAP_REVISION = 100
 # makefile
 .DEFAULT_GOAL := 
 # environment
@@ -196,8 +186,6 @@ XDG_CURRENT_DESKTOP = Unity
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/quest/Documents/6July
 # default
 .VARIABLES := 
 # automatic
@@ -205,7 +193,7 @@ OLDPWD = /home/quest/Documents/6July
 # environment
 LANGUAGE = en_IN:en
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-76a4fcc7-1.68.1-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-76a4fcc7-1.69.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -233,11 +221,11 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/00156d23_1909_4bee_b450_633ff3da6d4e
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/1d34de6c_6128_4d0b_b6bf_85ce31b9b2f4
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.99
+GNOME_TERMINAL_SERVICE = :1.709
 # default
 SUFFIXES := 
 # environment
@@ -255,11 +243,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 2422
+VSCODE_PID = 9130
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=1d846f8a571bf63f9a7b3b9262c65440
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=b088526c7d8f9bb5e9f1132a62c7c827
 # variable set hash-table stats:
-# Load=123/1024=12%, Rehash=0, Collisions=15/145=10%
+# Load=117/1024=11%, Rehash=0, Collisions=14/139=10%
 
 # Pattern-specific Variable Values
 
@@ -267,7 +255,7 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=1d846f8a571bf63f9a7b3b9
 
 # Directories
 
-# . (device 2053, inode 924078): 10 files, no impossibilities.
+# . (device 2053, inode 657705): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -279,7 +267,6 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=1d846f8a571bf63f9a7b3b9
 
 # Not a target:
 all:
- 
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -292,6 +279,7 @@ Makefile:
 #  File has been updated.
 #  Failed to be updated.
 
+ 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
@@ -326,6 +314,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Thu Jul  7 09:26:22 2022
+# Finished Make data base on Fri Jul  8 17:24:52 2022
 
  

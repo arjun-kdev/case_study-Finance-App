@@ -11,75 +11,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-void createSchemes()
-{
-    int N;
-    printf("Enter N  For Schemes :");
-    scanf("%d", &N);
-    scheme schemeObject = {};
-    for (int i = 0; i < N; i++)
-    {
-
-        printf("\tEnter scheme ID :[%d] ", i);
-        scanf("%d", &schemeObject.schemeId);
-        printf("\n");
-        printf("\tEnter schemeName at index :[%d] ", i);
-        scanf("%s", schemeObject.schemeName);
-        clear_buffer();
-        printf("\n");
-        printf("\tEnter max Amount at index :[%d] ", i);
-        scanf("%lf", &schemeObject.maxLoanAmt);
-        printf("\n");
-        printf("\tEnter interestRate at index :[%d] ", i);
-        scanf("%f", &schemeObject.interestRate);
-        printf("\n");
-        printf("\tEnter tenure at index :[%d] ", i);
-        scanf("%d", &schemeObject.tenure);
-        printf("\n");
-        add_scheme_intoFile(&schemeObject);
-    }
-}
-void getSchemeDetails()
-{
-    scheme scheme[100] = {};
-    int noOfSchemeObject = 0;
-    scheme_bdb_readAll(scheme, &noOfSchemeObject);
-    displayAllSchemeObjects(scheme, noOfSchemeObject);
-}
-
-void addEmployee()
-{
-    employee employeeObject = {};
-    printf("\tEnter Id : ");
-    scanf("%s", employeeObject.empId);
-    printf("\n");
-    printf("\tEnter name : ");
-    scanf("%s", employeeObject.employeeName);
-    printf("\n");
-    printf("\tEnter number : ");
-    scanf("%s", employeeObject.phoneNumber);
-    printf("\n");
-    printf("\tEnter Gender (M/F/T) : ");
-    clear_buffer();
-    scanf("%c", &employeeObject.gender);
-    printf("\n");
-    printf("\tEnter e-mail : ");
-    scanf("%s", employeeObject.email);
-    printf("\n");
-    printf("\tEnter Password : ");
-    scanf("%s", employeeObject.password);
-    printf("\n");
-    clear_buffer();
-    char dateOfBirth[20];
-    printf("Enter date of birth(format dd-MM-yyyy):");
-    scanf("%s", dateOfBirth);
-    sscanf(dateOfBirth, "%02d-%02d-%04d",
-           &employeeObject.DOB.day,
-           &employeeObject.DOB.month,
-           &employeeObject.DOB.year);
-    add_employee_intoFile(&employeeObject);
-}
-
 void addCustomer()
 {
     customer customerObject = {};
@@ -122,84 +53,6 @@ void addCustomer()
         add_customer_intoFile(&customerObject);
 }
 
-void readAllCustomers()
-{
-    customer customer[256] = {};
-    int noOfcustomerObject = 0;
-    customer_bdb_readall(customer, &noOfcustomerObject);
-    displayAllCustomerObjects(customer,noOfcustomerObject);
-}
-
-void readAllEmployees()
-{
-    employee employee[256] = {};
-    int noOfemployeeObject = 0;
-    employee_bdb_readall(employee, &noOfemployeeObject);
-    displayAllEmployeeObjects(employee,noOfemployeeObject);
-}
-
-void manage_scheme()
-{
-    int menu;
-    do
-    {
-        printf("\n\tChoice (1-Add Scheme, 2-Update Scheme, 3-Display Schemes, 4-Delete Scheme, 0-Exit): ");
-        scanf("%d", &menu);
-
-        if (1 == menu)
-        {
-            createSchemes();
-        }
-        else if (2 == menu)
-        {
-            updateScheme();
-        }
-        else if (3 == menu)
-        {
-            getSchemeDetails();
-        }
-        else if (4 == menu)
-        {
-            deleteScheme();
-        }
-    } while (1 == menu || 2 == menu || 3 == menu);
-}
-
-void displayAdminMenu()
-{
-    int menu;
-    do
-    {
-        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,\n\t4-Add Customer, 5-Update Customer,6- Add Employee,\n\t7-Read all customers,8- Read all employees, 0-Exit/logout): ");
-        scanf("%d", &menu);
-
-        if (1 == menu)
-        {
-            manage_scheme();
-        }
-        else if (4 == menu)
-        {
-            addCustomer();
-        }
-        else if (5 == menu)
-        {
-            // updateCustomer();
-        }
-        else if (6 == menu)
-        {
-            addEmployee();
-        }
-        else if (7 == menu)
-        {
-            readAllCustomers();
-        }
-        else if (8 == menu)
-        {
-            readAllEmployees();
-        }
-
-    } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu || 6 == menu || 7 == menu || 8 == menu);
-}
 
 int main()
 {
@@ -209,7 +62,7 @@ int main()
 
     do
     {
-        printf("\n\tEnter Choice (\n\t1 : registration as customer \n\t2:Login as customer \n\t3:Login as employee\n\t0:exit ): ");
+        printf("\n\tEnter Choice (\n\t1 : registration as customer \n\t2:Login as customer \n\t3:Login as employee\n\t4:admin login\n]t0:exit ): ");
         scanf("%d", &menu);
         if(menu == 1)
         {
@@ -227,7 +80,11 @@ int main()
             scanf("%s",loginAddr.pass);
             validate(loginAddr.username,loginAddr.pass);
         }
-    }while(menu ==1 || menu  == 2 || menu == 3);
+        else if(menu == 4)
+        {
+            do_adminLogin();
+        }
+    }while(menu ==1 || menu  == 2 || menu == 3 || menu == 4);
 
     return EXIT_SUCCESS;
 }

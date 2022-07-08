@@ -77,3 +77,66 @@ void deleteScheme()
         printf("Scheme is deleted successfully.\n");
     }
 }
+
+void createSchemes()
+{
+    int N;
+    printf("Enter N  For Schemes :");
+    scanf("%d", &N);
+    scheme schemeObject = {};
+    for (int i = 0; i < N; i++)
+    {
+
+        printf("\tEnter scheme ID :[%d] ", i);
+        scanf("%d", &schemeObject.schemeId);
+        printf("\n");
+        printf("\tEnter schemeName at index :[%d] ", i);
+        scanf("%s", schemeObject.schemeName);
+        clear_buffer();
+        printf("\n");
+        printf("\tEnter max Amount at index :[%d] ", i);
+        scanf("%lf", &schemeObject.maxLoanAmt);
+        printf("\n");
+        printf("\tEnter interestRate at index :[%d] ", i);
+        scanf("%f", &schemeObject.interestRate);
+        printf("\n");
+        printf("\tEnter tenure at index :[%d] ", i);
+        scanf("%d", &schemeObject.tenure);
+        printf("\n");
+        add_scheme_intoFile(&schemeObject);
+    }
+}
+void getSchemeDetails()
+{
+    scheme scheme[100] = {};
+    int noOfSchemeObject = 0;
+    scheme_bdb_readAll(scheme, &noOfSchemeObject);
+    displayAllSchemeObjects(scheme, noOfSchemeObject);
+}
+
+void manage_scheme()
+{
+    int menu;
+    do
+    {
+        printf("\n\tChoice (1-Add Scheme, 2-Update Scheme, 3-Display Schemes, 4-Delete Scheme, 0-Exit): ");
+        scanf("%d", &menu);
+
+        if (1 == menu)
+        {
+            createSchemes();
+        }
+        else if (2 == menu)
+        {
+            updateScheme();
+        }
+        else if (3 == menu)
+        {
+            getSchemeDetails();
+        }
+        else if (4 == menu)
+        {
+            deleteScheme();
+        }
+    } while (1 == menu || 2 == menu || 3 == menu);
+}

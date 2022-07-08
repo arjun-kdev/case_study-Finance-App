@@ -5,6 +5,9 @@
         "employee_file_operations.h": "c",
         "login_info.h": "c",
         "ui_customer.h": "c",
-        "finance_t.h": "c"
+        "finance_t.h": "c",
+        "ui_scheme.h": "c",
+        "scheme_file_operations.h": "c",
+        "login_file_operations.h": "c"
     }
 }

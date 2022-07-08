@@ -2,6 +2,7 @@
 #include "finance_t.h"
 #include "ui_customer.h"
 #include "ui_scheme.h"
+#include "customer_file_operations.h"
 #include "customer_bdb_file_operations.h"
 #include"login_file_operations.h"
 
@@ -14,6 +15,7 @@ void displayAllCustomerObjects(customer *customerAddr, int customerCount)
 }
 void displayCustomerObject(customer customerObject,int Index)
 {
+      
       
         printf("\tName :%s",customerObject.accHolderName);
         printf("\n");
@@ -80,3 +82,11 @@ void dologin_customer(login *loginAddr)
             }
 }
 
+
+void readAllCustomers()
+{
+    customer customer[256] = {};
+    int noOfcustomerObject = 0;
+    customer_bdb_readall(customer, &noOfcustomerObject);
+    displayAllCustomerObjects(customer,noOfcustomerObject);
+}
