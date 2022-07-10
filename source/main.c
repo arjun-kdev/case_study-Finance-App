@@ -62,7 +62,7 @@ int main()
 
     do
     {
-        printf("\n\tEnter Choice (\n\t1 : registration as customer \n\t2:Login as customer \n\t3:Login as employee\n\t4:admin login\n]t0:exit ): ");
+        printf("\n\tEnter Choice (\n\t1:registration as customer \n\t2:Login as customer \n\t3:Login as employee\n\t4:admin login\n]t0:exit ): ");
         scanf("%d", &menu);
         if(menu == 1)
         {

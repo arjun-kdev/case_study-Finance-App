@@ -30,7 +30,7 @@ struct customer_
 	int  preferredAccountType;
 	char address[256];
   	DOB_t DOB;
-  	scheme appliedScheme;
+  	//scheme appliedScheme;
 }__attribute__((__packed__));
 
 typedef struct customer_ customer;
@@ -48,4 +48,11 @@ struct employee_
 
 typedef struct employee_ employee;
 
-
+struct application_
+{
+	scheme SCHEME;
+	customer CUSTOMER;
+	double EMI;
+	char status[128];
+}; 
+typedef struct application_ application;

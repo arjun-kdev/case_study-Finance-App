@@ -1,10 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
 #include "finance_t.h"
 #include "ui_customer.h"
 #include "ui_scheme.h"
 #include "customer_file_operations.h"
 #include "customer_bdb_file_operations.h"
+#include "loan_application_bdb_file_operation.h"
 #include"login_file_operations.h"
+
+login *customerLoggedIn;
 
 void displayAllCustomerObjects(customer *customerAddr, int customerCount)
 {
@@ -40,13 +46,69 @@ void displayCustomerObject(customer customerObject,int Index)
 void applyForLoan()
 {
 	printf("\n\t Below are available scheme: \n\n");
-	scheme scheme[100] = {};
+	
+    int size =  scheme_bdb_count();
+    scheme* sch = (scheme*) malloc (size * sizeof(scheme));
     int noOfSchemeObject = 0;
-    scheme_bdb_readAll(scheme, &noOfSchemeObject);
-    displayAllSchemeObjects(scheme, noOfSchemeObject);
+    scheme_bdb_readAll(sch, &noOfSchemeObject);
+    displayAllSchemeObjects(sch, noOfSchemeObject);
+
+    scheme schemes;
+    int id;
     printf("\n\t Please select scheme ID: \n\n");
-    //ToDo insert customer and scheme detail in "Loan Application" db
-    //loan applied successfully
+    scanf("%d", &id);
+    scheme_bdb_readById(&schemes, id);
+
+    customer cust;
+    customer_bdb_readByEmail(&cust, customerLoggedIn->username);
+    
+    application applicationObj;
+    strcpy(applicationObj.CUSTOMER.accHolderName, cust.accHolderName);
+    strcpy(applicationObj.CUSTOMER.aadhaarID, cust.aadhaarID);
+    strcpy(applicationObj.CUSTOMER.accHolderName, cust.accHolderName);
+    strcpy(applicationObj.CUSTOMER.address, cust.address);
+    applicationObj.CUSTOMER.gender, cust.gender;
+    strcpy(applicationObj.CUSTOMER.phoneNumber, cust.phoneNumber);
+    applicationObj.CUSTOMER.DOB.day = cust.DOB.day;
+    applicationObj.CUSTOMER.DOB.month = cust.DOB.month;
+    applicationObj.CUSTOMER.DOB.year = cust.DOB.year;
+    strcpy(applicationObj.CUSTOMER.panCard, cust.panCard);
+
+    applicationObj.SCHEME.schemeId = schemes.schemeId;
+    strcpy(applicationObj.SCHEME.schemeName, schemes.schemeName);
+    applicationObj.SCHEME.maxLoanAmt = schemes.maxLoanAmt;
+    applicationObj.SCHEME.interestRate = schemes.interestRate;
+    applicationObj.SCHEME.tenure = schemes.tenure;
+
+    double P = schemes.maxLoanAmt;
+    float R = schemes.interestRate;
+    int T = schemes.tenure;
+    applicationObj.EMI = ( P * ( R / 100 ) * pow( (1 + (R / 100) ), T ) / ( pow( (1 + ( R / 100) ),( T - 1) ) ) );
+
+    strcpy(applicationObj.status, "Loan Application is pending for approval");
+
+    printf("\n\nBelow is the scheme you have selected:\n\n");
+    printf("Scheme ID: %d\n", schemes.schemeId);
+    printf("Scheme Name: %s\n", schemes.schemeName);
+    printf("Maximum loan amount: %lf\n", schemes.maxLoanAmt);
+    printf("Rate of interest: %f\n", schemes.interestRate);
+    printf("Tenure: %d\n", schemes.tenure);
+    //printf("customerLoggedIn is: %s\n", customerLoggedIn->username);
+    printf("EMI on Maximum loan amount is: %lf\n", applicationObj.EMI);
+
+    char ch;
+    printf("\nPlease confirm (y/n)?");
+    clear_buffer();
+    scanf("%c", &ch);
+    if ('y' == ch || 'Y' == ch)
+    {
+        loan_application_bdb_insert(&applicationObj);
+        printf("\nLoan is applied successfully.");
+        printf("\nLoan status will be updated after verification.\n");
+    }
+
+    free(sch);
+    sch = NULL;
 }
 
 void displaycustomerchoice(char *customerId)
@@ -74,6 +136,8 @@ void dologin_customer(login *loginAddr)
             if(isValidLogin)
             {    
                 printf("\n\n\t******Login successfull *******\n\n");
+                customerLoggedIn = (login*) malloc (sizeof(login));
+                strcpy(customerLoggedIn->username,loginAddr->username);
                 displaycustomerchoice(customerId);
             }else
             {

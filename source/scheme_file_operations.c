@@ -117,3 +117,17 @@ void scheme_bdb_delete(scheme schemeAddr)
 
     rename(tempFileName,fileName);
 }
+
+int scheme_bdb_count(){ 
+	int countChars = 0;
+	int countObjects = 0;
+	
+    char fileName[] = "scheme_db.dat";
+	FILE *input = fopen(fileName,"r"); 
+	fseek(input,0,SEEK_END);
+	countChars = ftell(input);	
+	fclose(input); 
+	
+	countObjects = countChars / (int)sizeof(scheme);
+	return countObjects;
+}

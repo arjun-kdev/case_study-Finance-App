@@ -7,3 +7,4 @@ void showSchemeObjects(scheme schemObject,int index);
 void scheme_bdb_update(scheme schemeAddr);
 void scheme_bdb_delete(scheme schemeAddr);
 void scheme_bdb_readById(scheme *scheme_addr, int schemeId);
+int scheme_bdb_count();

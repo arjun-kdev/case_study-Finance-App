@@ -5,7 +5,7 @@ debug:
 	gcc -g -I../header *.c -c
 	cp *.o ../object
 build:
-	gcc *.o -o finanApp
+	gcc *.o -o finanApp -lm
 	cp finanApp ../build
 	rm *.o 
 clean:

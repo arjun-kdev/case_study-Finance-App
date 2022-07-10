@@ -33,3 +33,26 @@ void customer_bdb_readall(customer *customerList,int *customerCount){
     *customerCount = I;
     fclose(in);
 }
+
+//customer_bdb_readByEmail
+//void scheme_bdb_readById(scheme* schemeAddr, int schemeIdAddr)
+void customer_bdb_readByEmail(customer* customerAddr, char customerEmailAddr[])
+{
+    int i=0;
+    customer cust;
+    
+    char fileName[] = "customer_db.dat";
+    FILE* in = fopen(fileName,"rb");
+    if(in == NULL){
+        printf("FILE ERROR.\n");
+        return;
+    }
+    while(fread(&cust,1,sizeof(customer),in)){
+        if(strcmp(cust.email, customerEmailAddr) == 0){
+        	(*customerAddr) = cust;
+        	break;
+        }
+        i++;
+    }
+    fclose(in);
+}
