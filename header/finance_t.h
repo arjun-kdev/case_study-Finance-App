@@ -56,3 +56,11 @@ struct application_
 	char status[128];
 }; 
 typedef struct application_ application;
+
+struct releaseLoan_
+{
+	application APPLICATION;
+	double releaseAmount;
+	DOB_t releaseDate;
+}; 
+typedef struct releaseLoan_ releaseLoan;
