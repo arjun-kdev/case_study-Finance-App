@@ -67,8 +67,9 @@ void applyForLoan()
     strcpy(applicationObj.CUSTOMER.aadhaarID, cust.aadhaarID);
     strcpy(applicationObj.CUSTOMER.accHolderName, cust.accHolderName);
     strcpy(applicationObj.CUSTOMER.address, cust.address);
-    applicationObj.CUSTOMER.gender, cust.gender;
+    applicationObj.CUSTOMER.gender = cust.gender;
     strcpy(applicationObj.CUSTOMER.phoneNumber, cust.phoneNumber);
+    strcpy(applicationObj.CUSTOMER.email, cust.email);
     applicationObj.CUSTOMER.DOB.day = cust.DOB.day;
     applicationObj.CUSTOMER.DOB.month = cust.DOB.month;
     applicationObj.CUSTOMER.DOB.year = cust.DOB.year;

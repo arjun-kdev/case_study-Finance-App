@@ -11,7 +11,7 @@ void displayAllSchemeObjects(scheme *schemeAddr, int objectCount)
 }
 void displaySchemeObject(scheme schemObject, int Index)
 {
-    printf("\n %d)\n", Index);
+    printf("\n %d)\n", Index+1);
     printf("\tScheme ID :%d", schemObject.schemeId);
     printf("\n");
     printf("\tScheme Name :%s", schemObject.schemeName);

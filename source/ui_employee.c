@@ -3,6 +3,7 @@
 #include "finance_t.h"
 #include "ui_employee.h"
 #include "ui_customer.h"
+#include "ui_loan.h"
 #include "employee_file_operations.h"
 #include"login_file_operations.h"
 
@@ -45,6 +46,10 @@ void displayAdminMenu()
         if (1 == menu)
         {
             manage_scheme();
+        }
+        if (2 == menu)
+        {
+            process_loan();
         }
         /*else if (4 == menu)
         {
