@@ -112,6 +112,53 @@ void applyForLoan()
     sch = NULL;
 }
 
+void statusOfLoan()
+{
+    printf("\n\t Below is current status of your loan: \n\n");
+
+    application appObj;
+    //char custName[128];
+    //printf("Enter Customer Name to find:");
+    //scanf("%s", custName);
+    loan_application_bdb_readByEmail(&appObj, customerLoggedIn->username);
+
+    printf("\tCustomer Name :%s",appObj.CUSTOMER.accHolderName);
+    printf("\n");
+    printf("\tAAdhar ID :%s",appObj.CUSTOMER.aadhaarID);
+    printf("\n");
+    printf("\tGender :%c",appObj.CUSTOMER.gender);
+    printf("\n");
+    printf("\tEmail :%s",appObj.CUSTOMER.email);
+    printf("\n");  
+    printf("\tAddress :%s",appObj.CUSTOMER.address);
+    printf("\n");  
+    printf("\tPhone no :%s",appObj.CUSTOMER.phoneNumber);
+    printf("\n"); 
+    printf("\tPhone no :%s",appObj.CUSTOMER.panCard);
+    printf("\n");
+    printf("\tDate of birth :"); 
+    printf("%02d-%02d-%04d",
+        appObj.CUSTOMER.DOB.day,
+        appObj.CUSTOMER.DOB.month,
+        appObj.CUSTOMER.DOB.year);
+    printf("\n");
+    printf("\tScheme ID :%d",appObj.SCHEME.schemeId);
+    printf("\n");
+    printf("\tScheme Name :%s",appObj.SCHEME.schemeName);
+    printf("\n");
+    printf("\tLoan Amount :%lf",appObj.SCHEME.maxLoanAmt);
+    printf("\n");
+    printf("\tInterest Rate :%f",appObj.SCHEME.interestRate);
+    printf("\n");
+    printf("\tTenure :%d",appObj.SCHEME.tenure);
+    printf("\n");
+    printf("\tEMI :%lf",appObj.EMI);
+    printf("\n***************************************************\n");
+    printf("\tStatus :%s",appObj.status);
+    printf("\n***************************************************\n");
+    printf("\n\n");
+}
+
 void displaycustomerchoice(char *customerId)
 {
     int menu;
@@ -122,6 +169,10 @@ void displaycustomerchoice(char *customerId)
         if(2 == menu)
         {
 			applyForLoan();
+		}
+        if(5 == menu)
+        {
+			statusOfLoan();
 		}
     } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu );
 }

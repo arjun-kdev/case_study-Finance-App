@@ -56,6 +56,27 @@ void loan_application_bdb_readByName(application* loanApplicationAddr, char appl
     fclose(in);
 }
 
+void loan_application_bdb_readByEmail(application* loanApplicationAddr, char applicationCustEmailAddr[])
+{
+    int i=0;
+    application app;
+    
+    char fileName[] = "loan_application_db.dat";
+    FILE* in = fopen(fileName,"rb");
+    if(in == NULL){
+        printf("FILE ERROR.\n");
+        return;
+    }
+    while(fread(&app,1,sizeof(application),in)){
+        if(strcmp(app.CUSTOMER.email, applicationCustEmailAddr) == 0){
+        	(*loanApplicationAddr) = app;
+        	break;
+        }
+        i++;
+    }
+    fclose(in);
+}
+
 void loan_application_bdb_update(application applicationAddr)
 {
 	
