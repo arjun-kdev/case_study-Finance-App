@@ -27,6 +27,9 @@
    }else if(iStatus == 4)
    {
       return "Withdrawn";
+   }else if(iStatus == 5)
+   {
+      return "Released";
    }else
    {
       return "Unknown";

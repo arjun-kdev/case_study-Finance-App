@@ -40,31 +40,35 @@ void displayAdminMenu()
     int menu;
     do
     {
-        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,6- Add Employee,\n\t7-Read all customers,8- Read all employees, 0-Exit/logout): ");
+        printf("\n\tChoice (1.Manage Scheme, 2.Process Loan, 3.Release Loan,4.Add Employee,\n\t5.Read all customers,6.Read all employees, 0.Exit/logout): ");
         scanf("%d", &menu);
 
         if (1 == menu)
         {
             manage_scheme();
         }
-        if (2 == menu)
+        else if (2 == menu)
         {
             process_loan();
         }
-        else if (6 == menu)
+        else if (3 == menu)
+        {
+            release_loan();
+        }
+        else if (4 == menu)
         {
             addEmployee();
         }
-        else if (7 == menu)
+        else if (5 == menu)
         {
             readAllCustomers();
         }
-        else if (8 == menu)
+        else if (6 == menu)
         {
             readAllEmployees();
         }
 
-    } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu || 6 == menu || 7 == menu || 8 == menu);
+    } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu || 6 == menu);
 }
 void validate(char username[], char pass[])
 {

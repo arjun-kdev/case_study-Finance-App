@@ -1,4 +1,5 @@
 #include"loan_application_bdb_file_operation.h"
+#include "util.h"
 #include<stdio.h>
 #include<string.h>
 
@@ -60,6 +61,31 @@ int loan_application_bdb_readByName(application* loanApplicationAddr, char appli
     return isCustomerFound;
 }
 
+int loan_application_bdb_readByNameAndStatus(application* loanApplicationAddr, char applicationCustNameAddr[])
+{
+    int i=0;
+    application app;
+    int isCustomerFound = 0;
+    char fileName[] = "loan_application_db.dat";
+    FILE* in = fopen(fileName,"rb");
+    if(in == NULL){
+        printf("FILE ERROR.\n");
+        return -1;
+    }
+    while(fread(&app,1,sizeof(application),in)){
+        if(strcmp(app.CUSTOMER.accHolderName, applicationCustNameAddr) == 0){
+        	if(strcmp(getStatus(app.status),"Approved") == 0){
+        	(*loanApplicationAddr) = app;
+        	isCustomerFound  = 1;
+            break;
+		}
+        }
+        i++;
+    }
+
+    fclose(in);
+    return isCustomerFound;
+}
 int loan_application_bdb_readByEmail(application* loanApplicationAddr, char applicationCustEmailAddr[])
 {
     int i=0;
