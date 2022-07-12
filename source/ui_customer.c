@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "util.h"
 #include <math.h>
+#include "Generic_Enums.h"
 #include "finance_t.h"
 #include "ui_customer.h"
 #include "ui_scheme.h"
@@ -86,7 +88,8 @@ void applyForLoan()
     int T = schemes.tenure;
     applicationObj.EMI = ( P * ( R / 100 ) * pow( (1 + (R / 100) ), T ) / ( pow( (1 + ( R / 100) ),( T - 1) ) ) );
 
-    strcpy(applicationObj.status, "Loan Application is pending for approval");
+    applicationObj.status= PENDING;
+    //strcpy(applicationObj.status, "Loan Application is pending for approval");
 
     printf("\n\nBelow is the scheme you have selected:\n\n");
     printf("Scheme ID: %d\n", schemes.schemeId);
@@ -111,7 +114,36 @@ void applyForLoan()
     free(sch);
     sch = NULL;
 }
-
+void withDrawloanApplication()
+{
+    application appObj;
+    int isRecordFound  =0;
+    isRecordFound = loan_application_bdb_readByEmail(&appObj, customerLoggedIn->username);
+    if(isRecordFound == 1 && appObj.status == PROCESSED)
+    {
+        printf("\n\t You can withdraw loan application as it is already processed ..!\n");
+        return;
+    }
+    else if(isRecordFound == 1 && appObj.status != PROCESSED)
+    {
+        char ch;
+        printf("\n\tSure ??Do you want to withdraw loan applicatio(y/n): ");
+        scanf(" %c", &ch);
+        if('y' == ch || 'Y' == ch)
+        {
+            appObj.status = WITHDRAWAL;
+            //strcpy(appObj.status, "Loan Application is approved");
+            loan_application_bdb_update(appObj);
+            printf("\n\tload application withdrawn :(\n");
+            print_line();
+        }
+    }
+    else
+    {
+        printf("\n\t You have not applied to any loan ..!\n");
+    }
+    
+}
 void statusOfLoan()
 {
     printf("\n\t Below is current status of your loan: \n\n");
@@ -154,7 +186,7 @@ void statusOfLoan()
     printf("\n");
     printf("\tEMI :%lf",appObj.EMI);
     printf("\n***************************************************\n");
-    printf("\tStatus :%s",appObj.status);
+    printf("\tStatus :%s",getStatus(appObj.status));
     printf("\n***************************************************\n");
     printf("\n\n");
 }
@@ -164,17 +196,22 @@ void displaycustomerchoice(char *customerId)
     int menu;
     do
     {
-        printf("\n\tChoice (\n\t1-Update profile\n\t2-apply for Loan\n\t3-read all loan types\n\t4-update loan application\n\t5-Status of loan \n\t6-withdraw loan application\n\t0-Exit):\n\n");
+        printf("\n\tChoice (\n\t1-Update profile\n\t2-apply for Loan\n\t3-Status of loan \n\t4-withdraw loan application\n\t0-Exit):\n\n");
         scanf("%d", &menu);
         if(2 == menu)
         {
 			applyForLoan();
 		}
-        if(5 == menu)
+        else if(3 == menu)
         {
 			statusOfLoan();
 		}
-    } while (1 == menu || 2 == menu || 3 == menu || 4 == menu || 5 == menu );
+        else if(4 == menu)
+        {
+            withDrawloanApplication();
+        }
+
+    } while (1 == menu || 2 == menu || 3 == menu || 4 == menu);
 }
 void dologin_customer(login *loginAddr)
 {

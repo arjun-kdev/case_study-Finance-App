@@ -8,6 +8,9 @@
         "finance_t.h": "c",
         "ui_scheme.h": "c",
         "scheme_file_operations.h": "c",
-        "login_file_operations.h": "c"
+        "login_file_operations.h": "c",
+        "loan_application_bdb_file_operation.h": "c",
+        "util.h": "c",
+        "stdio.h": "c"
     }
 }

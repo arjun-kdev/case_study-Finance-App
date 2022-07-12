@@ -40,7 +40,7 @@ void displayAdminMenu()
     int menu;
     do
     {
-        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,\n\t4-Add Customer, 5-Update Customer,6- Add Employee,\n\t7-Read all customers,8- Read all employees, 0-Exit/logout): ");
+        printf("\n\tChoice (1-Manage Scheme, 2-Process Loan, 3-Release Loan,6- Add Employee,\n\t7-Read all customers,8- Read all employees, 0-Exit/logout): ");
         scanf("%d", &menu);
 
         if (1 == menu)
@@ -51,18 +51,10 @@ void displayAdminMenu()
         {
             process_loan();
         }
-        /*else if (4 == menu)
-        {
-            addCustomer();
-        }
-        else if (5 == menu)
-        {
-            // updateCustomer();
-        }*/
-       /* else if (6 == menu)
+        else if (6 == menu)
         {
             addEmployee();
-        }*/
+        }
         else if (7 == menu)
         {
             readAllCustomers();
@@ -113,6 +105,8 @@ void do_adminLogin()
             scanf("%s",pass);
            if((strcmp(username,"admin@gmail.com")==0)&&(strcmp(pass,"admin123")==0))
            {
+             printf("\n\n\t******Login Sucess *******\n\n");
+            
              displayAdminMenu();
            }else
            {

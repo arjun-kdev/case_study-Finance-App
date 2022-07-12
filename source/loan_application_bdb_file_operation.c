@@ -35,46 +35,53 @@ void loan_application_bdb_readAll(application *loanApplicationList,int *noOfObje
     fclose(in);
 }
 
-void loan_application_bdb_readByName(application* loanApplicationAddr, char applicationCustNameAddr[])
+int loan_application_bdb_readByName(application* loanApplicationAddr, char applicationCustNameAddr[])
 {
     int i=0;
     application app;
-    
+    int isCustomerFound = 0;
     char fileName[] = "loan_application_db.dat";
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
         printf("FILE ERROR.\n");
-        return;
+        return -1;
     }
     while(fread(&app,1,sizeof(application),in)){
         if(strcmp(app.CUSTOMER.accHolderName, applicationCustNameAddr) == 0){
         	(*loanApplicationAddr) = app;
-        	break;
+        	isCustomerFound  = 1;
+            break;
+
         }
         i++;
     }
+
     fclose(in);
+    return isCustomerFound;
 }
 
-void loan_application_bdb_readByEmail(application* loanApplicationAddr, char applicationCustEmailAddr[])
+int loan_application_bdb_readByEmail(application* loanApplicationAddr, char applicationCustEmailAddr[])
 {
     int i=0;
     application app;
-    
+    int isRecordFound  = 0;
     char fileName[] = "loan_application_db.dat";
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
         printf("FILE ERROR.\n");
-        return;
+        return -1;
     }
     while(fread(&app,1,sizeof(application),in)){
         if(strcmp(app.CUSTOMER.email, applicationCustEmailAddr) == 0){
         	(*loanApplicationAddr) = app;
+            isRecordFound = 1;
         	break;
         }
         i++;
     }
+
     fclose(in);
+    return isRecordFound;
 }
 
 void loan_application_bdb_update(application applicationAddr)
@@ -114,7 +121,12 @@ int loan_application_bdb_count()
 	int countObjects = 0;
 	
     char fileName[] = "loan_application_db.dat";
-	FILE *input = fopen(fileName,"r"); 
+	FILE *input = fopen(fileName,"rb"); 
+    if(input == NULL)
+    {
+        printf("Loans Does not exist ...!\n");
+       return -1;
+    }
 	fseek(input,0,SEEK_END);
 	countChars = ftell(input);	
 	fclose(input); 

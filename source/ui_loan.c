@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "util.h"
+#include "Generic_Enums.h"
 #include"loan_application_bdb_file_operation.h"
 
 void displayLoanApplicationObject(application loanApplicationObject,int Index)
@@ -40,7 +42,7 @@ void displayLoanApplicationObject(application loanApplicationObject,int Index)
     printf("\n");
     printf("\tEMI :%lf",loanApplicationObject.EMI);
     printf("\n");
-    printf("\tStatus :%s",loanApplicationObject.status);
+    printf("\tStatus :%s",getStatus(loanApplicationObject.status));
     printf("\n\n\n");
         
 }
@@ -59,19 +61,19 @@ void process_loan()
     printf("\n\t Below are loan applications to process: \n\n");
 	
     int size =  loan_application_bdb_count();
-    application* app = (application*) malloc (size * sizeof(application));
+    application *app = (application*) malloc (10 * sizeof(application));
     int noOfApplicationObject = 0;
     loan_application_bdb_readAll(app, &noOfApplicationObject);
     displayAllLoanApplicationObjects(app, noOfApplicationObject);
 
     application appObj;
     char custName[128];
-    printf("Enter Customer Name to find:");
+    printf("\n\tEnter Customer Name to find: ");
     scanf("%s", custName);
-    loan_application_bdb_readByName(&appObj, custName);
-
+    int isCustomerFound  = loan_application_bdb_readByName(&appObj, custName);
+    if(isCustomerFound == 1)
+    {
     printf("\n\n\nThe searched customer Application:\n");
-
     printf("\tCustomer Name :%s",appObj.CUSTOMER.accHolderName);
     printf("\n");
     printf("\tAAdhar ID :%s",appObj.CUSTOMER.aadhaarID);
@@ -104,26 +106,32 @@ void process_loan()
     printf("\n");
     printf("\tEMI :%lf",appObj.EMI);
     printf("\n");
-    printf("\tStatus :%s",appObj.status);
+    printf("\tStatus : %s",getStatus(appObj.status));
     printf("\n\n\n");
 
     char ch;
-    printf("\nSelect A : Approval R : Reject");
+    printf("\n\tSelect A : Approval R : Reject ");
     scanf(" %c", &ch);
     if('a' == ch || 'A' == ch)
     {
-        strcpy(appObj.status, "Loan Application is approved");
+        appObj.status = APPROVED;
+        //strcpy(appObj.status, "Loan Application is approved");
         loan_application_bdb_update(appObj);
-
     }
     else if('r' == ch || 'R' == ch)
     {
-        strcpy(appObj.status, "Loan Application has been rejected");
+        appObj.status = REJECTED;
         loan_application_bdb_update(appObj);
     }
 
-    printf("Application is processed successfully.\n");
-    
+    printf("\n\tpplication is processed successfully.\n");
     free(app);
+    print_line();
+    }
+    else
+    {
+        printf("\n\tLoan Application not found for name : %s\n",custName);
+        print_line();
+    }   
     app = NULL;
 }
