@@ -198,3 +198,42 @@ int loan_application_bdb_count()
 	return countObjects;
 }
 
+void loan_bdb_delete(application schemeAddr)
+{
+    int i=0;
+    application sch;
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(LOAN_DB_PATH));
+    char tempFileName[] = "schemeTemp_db.dat";
+	
+    FILE* in = fopen(fileName,"rb");
+    FILE* out = fopen(tempFileName,"wb");
+	
+    if(in == NULL){
+        printf("(in)FILE ERROR.\n");
+        return;
+    }
+    
+    if(out == NULL){
+        printf("(out)FILE ERROR.\n");
+        return;
+    }
+	
+    while(fread(&sch,1,sizeof(scheme),in)){
+       i++;
+        if((strcmp(sch.CUSTOMER.email,schemeAddr.CUSTOMER.email)==0) ){          
+              if((schemeAddr.status!=WITHDRAWAL))
+              {
+                fwrite(&sch,1,sizeof(scheme),out);
+              }
+        }       
+    }
+    
+    fclose(out);
+    fclose(in);
+
+    remove(fileName);
+
+    rename(tempFileName,fileName);
+}

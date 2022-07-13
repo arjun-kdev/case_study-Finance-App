@@ -20,7 +20,7 @@ int main()
 
     do
     {
-        printf("\n\tEnter Choice : \n\n\t1=>registration as customer \n\t2=>Login as customer \n\t3=>Login as employee\n\t4=>admin login\n\t0=>exit : ");
+        printf("\n\tEnter Choice : \n\n\t1=>Signup(customer) \n\t2=>SignIn as customer \n\t3=>SignIn as employee\n\t4=>admin login\n\t0=>exit : ");
         scanf("%d", &menu);
 
         printf("\n\n\n\n");
@@ -34,6 +34,8 @@ int main()
         }
         else if (menu == 3)
         {
+           printf("\n\n\t******Enter Login credentails *******\n\n");
+   
             printf("\n\temail :");
             scanf("%s", loginAddr.username);
             printf("\n\tpassword :");

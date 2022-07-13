@@ -66,7 +66,7 @@ void customer_bdb_readByEmail(customer* customerAddr, char customerEmailAddr[])
     }
     fclose(in);
 }
-void update_customer_bdb_update_intoFile(customer* customerAddr, char customerEmailAddr[])
+void update_customer_bdb_update_intoFile(customer customerAddr, char customerEmailAddr[])
 {
 	
     int i=0;
@@ -83,16 +83,16 @@ void update_customer_bdb_update_intoFile(customer* customerAddr, char customerEm
 	
     while(fread(&cust,1,sizeof(cust),in)){
         i++;
-         if(strcmp(cust.email, customerEmailAddr) == 0){       
+         if(strcmp(cust.email, customerEmailAddr) == 0){
               break;
         }       
     }
 	
     if(i > 0){
-
        fseek(in,(i-1)*sizeof(cust),SEEK_SET);
        fwrite(&customerAddr,1,sizeof(cust),in);
     }
-
     fclose(in);
 }
+ 
+        

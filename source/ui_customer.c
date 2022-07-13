@@ -45,10 +45,10 @@ void displayCustomerObject(customer customerObject, int Index)
 }
 void updateProfile()
 {
-    printf("Below fields only permitted to update :\n\n");
-    printf("Select the field you want to update :\n\n");
+    printf("\nt\tBelow fields only permitted to update :\n\n");
+    printf("\tSelect the field you want to update :\n\n");
     int opt = -1;
-    printf("1.Name\n2.number\n3.password\n\n");
+    printf("\n\t1.Name\n2.number\n3.password\n\n");
     scanf("%d", &opt);
     customer customerObject = {};
 	customer_bdb_readByEmail(&customerObject, customerLoggedIn->username);
@@ -70,8 +70,8 @@ void updateProfile()
         printf("\n");
         break;
     }
-    update_customer_bdb_update_intoFile(&customerObject, customerLoggedIn->username);
-    printf("customer profile updated ..!!");
+    update_customer_bdb_update_intoFile(customerObject, customerLoggedIn->username);
+    printf("\n\tcustomer profile updated ..!!");
 }
 
 void applyForLoan()
@@ -89,17 +89,18 @@ void applyForLoan()
     scheme_bdb_readAll(sch, &noOfSchemeObject);
     displayAllSchemeObjects(sch, noOfSchemeObject);
 
-    scheme schemes;
+    scheme schemes={};
     int id;
-    printf("\n\t Please select scheme ID: \n\n");
+    printf("\n\tPlease select scheme ID: ");
     scanf("%d", &id);
     scheme_bdb_readById(&schemes, id);
 
     customer cust;
     customer_bdb_readByEmail(&cust, customerLoggedIn->username);
 
-    application applicationObj;
-    strcpy(applicationObj.CUSTOMER.accHolderName, cust.accHolderName);
+    application applicationObj ={};
+    applicationObj.CUSTOMER = cust;
+    /*strcpy(applicationObj.CUSTOMER.accHolderName, cust.accHolderName);
     strcpy(applicationObj.CUSTOMER.aadhaarID, cust.aadhaarID);
     strcpy(applicationObj.CUSTOMER.accHolderName, cust.accHolderName);
     strcpy(applicationObj.CUSTOMER.address, cust.address);
@@ -110,19 +111,22 @@ void applyForLoan()
     applicationObj.CUSTOMER.DOB.month = cust.DOB.month;
     applicationObj.CUSTOMER.DOB.year = cust.DOB.year;
     strcpy(applicationObj.CUSTOMER.panCard, cust.panCard);
-
-    applicationObj.SCHEME.schemeId = schemes.schemeId;
+    */
+    
+    /*applicationObj.SCHEME.schemeId = schemes.schemeId;
     strcpy(applicationObj.SCHEME.schemeName, schemes.schemeName);
     applicationObj.SCHEME.maxLoanAmt = schemes.maxLoanAmt;
     applicationObj.SCHEME.interestRate = schemes.interestRate;
     applicationObj.SCHEME.tenure = schemes.tenure;
-
+    */
     double P = schemes.maxLoanAmt;
     float R = schemes.interestRate;
     int T = schemes.tenure;
     applicationObj.EMI = (P * (R / 100) * pow((1 + (R / 100)), T) / (pow((1 + (R / 100)), (T - 1))));
 
     applicationObj.status = PENDING;
+    applicationObj.SCHEME = schemes;
+    
     // strcpy(applicationObj.status, "Loan Application is pending for approval");
 
     printf("\n\nBelow is the scheme you have selected:\n\n");
@@ -155,7 +159,7 @@ void withDrawloanApplication()
     isRecordFound = loan_application_bdb_readByEmail(&appObj, customerLoggedIn->username);
     if (isRecordFound == 1 && appObj.status == PROCESSED)
     {
-        printf("\n\t You can withdraw loan application as it is already processed ..!\n");
+        printf("\n\t You can not withdraw loan application as it is already processed ..!\n");
         return;
     }
     else if (isRecordFound == 1 && appObj.status != PROCESSED)
@@ -167,7 +171,7 @@ void withDrawloanApplication()
         {
             appObj.status = WITHDRAWAL;
             // strcpy(appObj.status, "Loan Application is approved");
-            loan_application_bdb_update(appObj);
+            loan_bdb_delete(appObj);
             printf("\n\tload application withdrawn :(\n");
             print_line();
         }
@@ -226,7 +230,7 @@ void statusOfLoan()
     }
     else
     {
-        // printf("\n\t You have not applied to any loan ..!\n");
+        printf("\n\t You have not applied to any loan ..!\n");
     }
 }
 
@@ -327,4 +331,6 @@ void registrationForCustomer()
            &customerObject.DOB.month,
            &customerObject.DOB.year);
     add_customer_intoFile(&customerObject);
+    printf("Registration Sucess ..!");
+    print_line();
 }
