@@ -1,8 +1,8 @@
-#include"employee_file_operations.h"
 #include<stdio.h>
-#include"util.h"
-#include "Generic_Enums.h"
 #include<string.h>
+#include"employee_file_operations.h"
+#include"util.h"
+#include "generic_enums.h"
 
 void add_employee_intoFile(employee *employeeAddr)
 {

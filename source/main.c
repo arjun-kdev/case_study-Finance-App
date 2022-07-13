@@ -1,3 +1,7 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "scheme_file_operations.h"
 #include "employee_file_operations.h"
 #include "customer_bdb_file_operations.h"
@@ -7,9 +11,6 @@
 #include "ui_employee.h"
 #include "ui_customer.h"
 #include "util.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 void addCustomer()
 {

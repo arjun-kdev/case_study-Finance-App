@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include"finance_t.h"
-#include"Generic_Enums.h"
+#include"generic_enums.h"
 #include"util.h"
 #include"customer_bdb_file_operations.h"
 

@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "util.h"
 #include <math.h>
-#include "Generic_Enums.h"
+#include "generic_enums.h"
 #include "finance_t.h"
 #include "ui_customer.h"
 #include "ui_scheme.h"
@@ -11,6 +10,7 @@
 #include "customer_bdb_file_operations.h"
 #include "loan_application_bdb_file_operation.h"
 #include "login_file_operations.h"
+#include "util.h"
 
 login *customerLoggedIn;
 
@@ -49,7 +49,7 @@ void updateProfile()
     printf("Select the field you want to update :\n\n");
     int opt = -1;
     printf("1.Name\n2.number\n3.password\n");
-    scanf("%d", opt);
+    scanf("%d", &opt);
     customer customerObject = {};
     switch (opt)
     {
@@ -69,7 +69,7 @@ void updateProfile()
         printf("\n");
         break;
     }
-    update_customer_intoFile(&customerObject, customerLoggedIn->username);
+    // /update_customerinfo_intoFile(&customerObject, customerLoggedIn->username);
 }
 
 void applyForLoan()
@@ -77,6 +77,11 @@ void applyForLoan()
     printf("\n\t Below are available scheme: \n\n");
 
     int size = scheme_bdb_count();
+    if(size  == -1)
+    {
+        printf("\n\tPlease contact to support team\n");
+        return ;
+    }
     scheme *sch = (scheme *)malloc(size * sizeof(scheme));
     int noOfSchemeObject = 0;
     scheme_bdb_readAll(sch, &noOfSchemeObject);

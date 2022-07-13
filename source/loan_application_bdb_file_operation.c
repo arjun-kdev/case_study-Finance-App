@@ -1,9 +1,10 @@
+
+#include<string.h>
+#include<stdio.h>
 #include"loan_application_bdb_file_operation.h"
 #include "util.h"
-#include<stdio.h>
-#include"Generic_Enums.h"
+#include "generic_enums.h"
 #include"util.h"
-#include<string.h>
 
 void loan_application_bdb_insert(application *applicationAddr)
 {

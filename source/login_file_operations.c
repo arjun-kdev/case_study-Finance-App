@@ -1,8 +1,9 @@
-#include"login_file_operations.h"
+
 #include<stdio.h>
-#include "Generic_Enums.h"
-#include"util.h"
 #include<string.h>
+#include"login_file_operations.h"
+#include"util.h"
+#include "generic_enums.h"
 
 int loginCheck(char username[], char pass[])
 {

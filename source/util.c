@@ -1,8 +1,7 @@
 #include "util.h"
 void clear_buffer()
 {
-   while ((getchar()) != '\n')
-      ;
+   while ((getchar()) != '\n');
 }
 void print_line()
 {
@@ -29,12 +28,15 @@ char *getStatus(int iStatus)
    else if (iStatus == 4)
    {
       return "Withdrawn";
-<<<<<<< HEAD
    }
-   else
+   else if(iStatus == 5)
+   {
+      return "Released";
+   }else
    {
       return "Unknown";
    }
+
 }
 char * getFilePath(int code)
 {
@@ -62,15 +64,4 @@ char * getFilePath(int code)
    {
       return "";
    }  
-}
-=======
-   }else if(iStatus == 5)
-   {
-      return "Released";
-   }else
-   {
-      return "Unknown";
-   }
-
  }
->>>>>>> 7608736c9552442fbbe789a7f5613a7e61352541

@@ -1,7 +1,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdio.h>
-#include"Generic_Enums.h"
+#include"generic_enums.h"
 #include"util.h"
 #include"loan_application_bdb_file_operation.h"
 
@@ -226,7 +226,7 @@ void release_loan()
 		releaseLoan.releaseDate.day = dob.day;
 		releaseLoan.releaseDate.month = dob.month;
 		releaseLoan.releaseDate.year = dob.year;
-    	appObj.status = RELEASED;
+    	appObj.status = PROCESSED;
         loan_application_bdb_update(appObj);
     }
 
