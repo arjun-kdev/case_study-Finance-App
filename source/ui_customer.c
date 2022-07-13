@@ -69,7 +69,7 @@ void updateProfile()
         printf("\n");
         break;
     }
-    // /update_customerinfo_intoFile(&customerObject, customerLoggedIn->username);
+    update_customer_bdb_update_intoFile(&customerObject, customerLoggedIn->username);
 }
 
 void applyForLoan()

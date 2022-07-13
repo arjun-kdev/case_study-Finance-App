@@ -66,3 +66,33 @@ void customer_bdb_readByEmail(customer* customerAddr, char customerEmailAddr[])
     }
     fclose(in);
 }
+void update_customer_bdb_update_intoFile(customer* customerAddr, char customerEmailAddr[])
+{
+	
+    int i=0;
+    customer cust;
+    char fileName[45];
+    strcpy(fileName,getFilePath(CUSTOMER_DB_PATH));
+
+    FILE* in = fopen(fileName,"rb+");
+
+    if(in == NULL){  
+        printf("FILE ERROR.\n");
+        return;
+    }
+	
+    while(fread(&sch,1,sizeof(cust),in)){
+        i++;
+         if(strcmp(cust.email, customerEmailAddr) == 0){       
+              break;
+        }       
+    }
+	
+    if(i > 0){
+
+       fseek(in,(i-1)*sizeof(cust),SEEK_SET);
+       fwrite(&customerAddr,1,sizeof(cust),in);
+    }
+
+    fclose(in);
+}
