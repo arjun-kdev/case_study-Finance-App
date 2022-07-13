@@ -151,6 +151,7 @@ void readAllEmployees()
 {
     employee employee[256] = {};
     int noOfemployeeObject = 0;
+    
     employee_bdb_readall(employee, &noOfemployeeObject);
     displayAllEmployeeObjects(employee,noOfemployeeObject);
 }

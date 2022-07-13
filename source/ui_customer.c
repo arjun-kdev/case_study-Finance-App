@@ -43,6 +43,34 @@ void displayCustomerObject(customer customerObject, int Index)
            customerObject.DOB.year);
     printf("\n");
 }
+void updateProfile()
+{
+    printf("Below fields only permitted to update :\n\n");
+    printf("Select the field you want to update :\n\n");
+    int opt = -1;
+    printf("1.Name\n2.number\n3.password\n");
+    scanf("%d", opt);
+    customer customerObject = {};
+    switch (opt)
+    {
+    case 1:
+        printf("\tEnter new name : ");
+        scanf("%s", customerObject.accHolderName);
+        printf("\n");
+        break;
+    case 2:
+        printf("\tEnter newnumber : ");
+        scanf("%s", customerObject.phoneNumber);
+        printf("\n");
+        break;
+    case 3:
+        printf("\tEnter new password : ");
+        scanf("%s", customerObject.password);
+        printf("\n");
+        break;
+    }
+    update_customer_intoFile(&customerObject, customerLoggedIn->username);
+}
 
 void applyForLoan()
 {
@@ -144,10 +172,10 @@ void withDrawloanApplication()
 }
 void statusOfLoan()
 {
-    printf("\n\t Below is current status of your loan: \n\n");
+    //printf("\n\t Below is current status of your loan: \n\n");
 
     application appObj;
-    
+
     int isRecordFound = 0;
     isRecordFound = loan_application_bdb_readByEmail(&appObj, customerLoggedIn->username);
 
@@ -191,7 +219,7 @@ void statusOfLoan()
     }
     else
     {
-        //printf("\n\t You have not applied to any loan ..!\n");
+        // printf("\n\t You have not applied to any loan ..!\n");
     }
 }
 
@@ -202,7 +230,11 @@ void displaycustomerchoice(char *customerId)
     {
         printf("\n\tChoice (\n\t1-Update profile\n\t2-apply for Loan\n\t3-Status of loan \n\t4-withdraw loan application\n\t0-Exit):\n\n");
         scanf("%d", &menu);
-        if (2 == menu)
+        if (1 == menu)
+        {
+            updateProfile();
+        }
+        else if (2 == menu)
         {
             applyForLoan();
         }

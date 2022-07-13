@@ -1,6 +1,6 @@
 #include "scheme_file_operations.h"
 #include "employee_file_operations.h"
-#include"customer_bdb_file_operations.h"
+#include "customer_bdb_file_operations.h"
 #include "customer_file_operations.h"
 #include "login_file_operations.h"
 #include "ui_scheme.h"
@@ -50,9 +50,8 @@ void addCustomer()
            &customerObject.DOB.day,
            &customerObject.DOB.month,
            &customerObject.DOB.year);
-        add_customer_intoFile(&customerObject);
+    add_customer_intoFile(&customerObject);
 }
-
 
 int main()
 {
@@ -62,29 +61,31 @@ int main()
 
     do
     {
-        printf("\n\tEnter Choice (\n\t1:registration as customer \n\t2:Login as customer \n\t3:Login as employee\n\t4:admin login\n]t0:exit ): ");
+        printf("\n\tEnter Choice : \n\n\t1=>registration as customer \n\t2=>Login as customer \n\t3=>Login as employee\n\t4=>admin login\n\t0=>exit : ");
         scanf("%d", &menu);
-        if(menu == 1)
+
+        printf("\n\n\n\n");
+        if (menu == 1)
         {
             addCustomer();
         }
-        else if(menu == 2)
+        else if (menu == 2)
         {
             dologin_customer(&loginAddr);
         }
-        else if(menu  == 3)
+        else if (menu == 3)
         {
             printf("\n\temail :");
-            scanf("%s",loginAddr.username);
+            scanf("%s", loginAddr.username);
             printf("\n\tpassword :");
-            scanf("%s",loginAddr.pass);
-            validate(loginAddr.username,loginAddr.pass);
+            scanf("%s", loginAddr.pass);
+            validate(loginAddr.username, loginAddr.pass);
         }
-        else if(menu == 4)
+        else if (menu == 4)
         {
             do_adminLogin();
         }
-    }while(menu ==1 || menu  == 2 || menu == 3 || menu == 4);
+    } while (menu == 1 || menu == 2 || menu == 3 || menu == 4);
 
     return EXIT_SUCCESS;
 }

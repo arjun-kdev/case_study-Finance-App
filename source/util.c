@@ -29,6 +29,7 @@ char *getStatus(int iStatus)
    else if (iStatus == 4)
    {
       return "Withdrawn";
+<<<<<<< HEAD
    }
    else
    {
@@ -62,3 +63,14 @@ char * getFilePath(int code)
       return "";
    }  
 }
+=======
+   }else if(iStatus == 5)
+   {
+      return "Released";
+   }else
+   {
+      return "Unknown";
+   }
+
+ }
+>>>>>>> 7608736c9552442fbbe789a7f5613a7e61352541
