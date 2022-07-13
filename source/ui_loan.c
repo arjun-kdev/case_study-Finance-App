@@ -203,17 +203,17 @@ void release_loan()
     double releaseAmount = 0.0f;
     clear_buffer();
    
-  	do{
+  	
   	 printf("Enter release amount :");
      scanf("%lf", &releaseAmount);
+    label:
     if(releaseAmount < appObj.SCHEME.maxLoanAmt){
     	releaseLoan.releaseAmount = releaseAmount;
-    	break;
     	}
 	else{
 		printf("Enter lesser amount than maximum..");
+		goto label;
 		}
-	}while(releaseAmount < appObj.SCHEME.maxLoanAmt);
     clear_buffer();
     char releasedate[20];
     DOB_t dob;

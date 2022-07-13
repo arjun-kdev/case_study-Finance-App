@@ -47,9 +47,14 @@ void displayAdminMenu()
         {
             manage_scheme();
         }
-        if (2 == menu)
+        else if (2 == menu)
         {
             process_loan();
+        }
+        
+        else if (2 == menu)
+        {
+            release_loan();
         }
         else if (6 == menu)
         {
@@ -84,7 +89,7 @@ void validate(char username[], char pass[])
         	}
     	}else
         {
-            printf("Password minimum 8 characters..!!") ;
+            printf("Password minimum 4 characters..!!") ;
         }
     }
     else
