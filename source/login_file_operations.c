@@ -1,12 +1,17 @@
 #include"login_file_operations.h"
 #include<stdio.h>
+#include "Generic_Enums.h"
+#include"util.h"
 #include<string.h>
 
 int loginCheck(char username[], char pass[])
 {
     employee emp;
     
-    char fileName[] = "employee_db.dat";
+   
+    char fileName[45];
+    strcpy(fileName,getFilePath(EMPLOYEE_DB_PATH));
+
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
         printf("FILE ERROR.\n");
@@ -31,7 +36,9 @@ int validatelogin(char *username ,char *pass,char customerId[])
 { 
     int isvalidLogin = 0;
     customer sch;
-    char fileName[] = "customer_db.dat";
+   
+    char fileName[45];
+    strcpy(fileName,getFilePath(CUSTOMER_DB_PATH));
     
     FILE* in = fopen(fileName,"r");
     

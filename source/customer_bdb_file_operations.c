@@ -1,11 +1,16 @@
 #include<stdio.h>
 #include<string.h>
 #include"finance_t.h"
+#include"Generic_Enums.h"
+#include"util.h"
 #include"customer_bdb_file_operations.h"
 
 void add_customer_intoFile(customer *customerAddr)
 {
-    char fileName[] = "customer_db.dat";
+    
+    char fileName[45];
+    strcpy(fileName,getFilePath(CUSTOMER_DB_PATH));
+
     FILE* out = fopen(fileName,"ab");
     if(out == NULL){
         printf("FILE ERROR.\n");
@@ -20,7 +25,9 @@ void customer_bdb_readall(customer *customerList,int *customerCount){
     int I=0;
     customer customerObj;
     
-    char fileName[] = "customer_db.dat";
+    char fileName[45];
+    strcpy(fileName,getFilePath(CUSTOMER_DB_PATH));
+
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
         printf("FILE ERROR.\n");
@@ -41,7 +48,10 @@ void customer_bdb_readByEmail(customer* customerAddr, char customerEmailAddr[])
     int i=0;
     customer cust;
     
-    char fileName[] = "customer_db.dat";
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(CUSTOMER_DB_PATH));
+
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
         printf("FILE ERROR.\n");

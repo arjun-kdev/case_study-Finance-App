@@ -1,10 +1,15 @@
 #include"loan_application_bdb_file_operation.h"
 #include<stdio.h>
+#include"Generic_Enums.h"
+#include"util.h"
 #include<string.h>
 
 void loan_application_bdb_insert(application *applicationAddr)
 {
-    char fileName[] = "loan_application_db.dat";
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(LOAN_DB_PATH));
+
     FILE* out = fopen(fileName,"ab");
     if(out == NULL){
         printf("FILE ERROR.\n");
@@ -21,10 +26,14 @@ void loan_application_bdb_readAll(application *loanApplicationList,int *noOfObje
     int I=0;
     application appObj;
     
-    char fileName[] = "loan_application_db.dat";
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(LOAN_DB_PATH));
+
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
-        printf("FILE ERROR.\n");
+
+        printf("\n\tloan list is empty\n");
         return;
     }
     while(fread(&appObj,1,sizeof(application),in)){
@@ -40,10 +49,13 @@ int loan_application_bdb_readByName(application* loanApplicationAddr, char appli
     int i=0;
     application app;
     int isCustomerFound = 0;
-    char fileName[] = "loan_application_db.dat";
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(LOAN_DB_PATH));
+
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
-        printf("FILE ERROR.\n");
+        printf("\n\tloan list is empty\n");
         return -1;
     }
     while(fread(&app,1,sizeof(application),in)){
@@ -65,10 +77,12 @@ int loan_application_bdb_readByEmail(application* loanApplicationAddr, char appl
     int i=0;
     application app;
     int isRecordFound  = 0;
-    char fileName[] = "loan_application_db.dat";
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(LOAN_DB_PATH));
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
-        printf("FILE ERROR.\n");
+        printf("\n\tNO data Found.\n");
         return -1;
     }
     while(fread(&app,1,sizeof(application),in)){
@@ -89,8 +103,10 @@ void loan_application_bdb_update(application applicationAddr)
 	
     int i=0;
     application app;
-    char fileName[] = "loan_application_db.dat";
-	
+    
+    char fileName[45];
+    strcpy(fileName,getFilePath(LOAN_DB_PATH));
+
     FILE* in = fopen(fileName,"rb+");
 
     if(in == NULL){  
@@ -120,11 +136,12 @@ int loan_application_bdb_count()
 	int countChars = 0;
 	int countObjects = 0;
 	
-    char fileName[] = "loan_application_db.dat";
+    char fileName[45];
+    strcpy(fileName,getFilePath(LOAN_DB_PATH));
 	FILE *input = fopen(fileName,"rb"); 
     if(input == NULL)
     {
-        printf("Loans Does not exist ...!\n");
+        printf("Loan list is Empty ...!\n");
        return -1;
     }
 	fseek(input,0,SEEK_END);

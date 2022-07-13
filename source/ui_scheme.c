@@ -1,7 +1,9 @@
+
+#include <stdio.h>
+#include <stdlib.h>
 #include "finance_t.h"
 #include "ui_scheme.h"
 #include "scheme_file_operations.h"
-#include <stdio.h>
 void displayAllSchemeObjects(scheme *schemeAddr, int objectCount)
 {
     for (int i = 0; i < objectCount; i++)
@@ -108,10 +110,15 @@ void createSchemes()
 }
 void getSchemeDetails()
 {
-    scheme scheme[100] = {};
+    scheme *schemeAddr  = NULL;
     int noOfSchemeObject = 0;
-    scheme_bdb_readAll(scheme, &noOfSchemeObject);
-    displayAllSchemeObjects(scheme, noOfSchemeObject);
+    noOfSchemeObject = scheme_bdb_count();
+    schemeAddr = (scheme*) malloc (10 * sizeof(scheme));
+    
+    scheme_bdb_readAll(schemeAddr, &noOfSchemeObject);
+    displayAllSchemeObjects(schemeAddr, noOfSchemeObject);
+    free(schemeAddr);
+    schemeAddr = NULL;
 }
 
 void manage_scheme()

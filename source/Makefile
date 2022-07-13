@@ -10,5 +10,5 @@ build:
 	rm *.o 
 clean:
 	rm -r *.o finanApp
-	
-	
+run:
+	./finanApp

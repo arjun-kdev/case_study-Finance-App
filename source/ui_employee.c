@@ -106,7 +106,6 @@ void do_adminLogin()
            if((strcmp(username,"admin@gmail.com")==0)&&(strcmp(pass,"admin123")==0))
            {
              printf("\n\n\t******Login Sucess *******\n\n");
-            
              displayAdminMenu();
            }else
            {

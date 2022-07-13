@@ -1,10 +1,15 @@
 #include"scheme_file_operations.h"
 #include<stdio.h>
+#include"util.h"
+#include"Generic_Enums.h"
 #include<string.h>
 
 void add_scheme_intoFile(scheme *schemeAddr)
 {
-    char fileName[] = "scheme_db.dat";
+    
+    char fileName[45];
+    strcpy(fileName,getFilePath(SCHEME_DB_PATH));
+
     FILE* out = fopen(fileName,"ab");
     if(out == NULL){
         printf("FILE ERROR.\n");
@@ -20,7 +25,9 @@ void scheme_bdb_readAll(scheme *schemeList,int *noOfObjects){
     int I=0;
     scheme schemeObj;
     
-    char fileName[] = "scheme_db.dat";
+    char fileName[45];
+    strcpy(fileName,getFilePath(SCHEME_DB_PATH));
+
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
         printf("FILE ERROR.\n");
@@ -38,7 +45,9 @@ void scheme_bdb_readById(scheme* schemeAddr, int schemeIdAddr)
     int i=0;
     scheme sch;
     
-    char fileName[] = "scheme_db.dat";
+    char fileName[45];
+    strcpy(fileName,getFilePath(SCHEME_DB_PATH));
+
     FILE* in = fopen(fileName,"rb");
     if(in == NULL){
         printf("FILE ERROR.\n");
@@ -58,8 +67,9 @@ void scheme_bdb_update(scheme schemeAddr)
 	
     int i=0;
     scheme sch;
-    char fileName[] = "scheme_db.dat";
-	
+    char fileName[45];
+    strcpy(fileName,getFilePath(SCHEME_DB_PATH));
+
     FILE* in = fopen(fileName,"rb+");
 
     if(in == NULL){  
@@ -86,7 +96,9 @@ void scheme_bdb_delete(scheme schemeAddr)
 {
     int i=0;
     scheme sch;
-    char fileName[] = "scheme_db.dat";
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(SCHEME_DB_PATH));
     char tempFileName[] = "schemeTemp_db.dat";
 	
     FILE* in = fopen(fileName,"r");
@@ -118,16 +130,23 @@ void scheme_bdb_delete(scheme schemeAddr)
     rename(tempFileName,fileName);
 }
 
-int scheme_bdb_count(){ 
+int scheme_bdb_count()
+{ 
 	int countChars = 0;
 	int countObjects = 0;
 	
-    char fileName[] = "scheme_db.dat";
-	FILE *input = fopen(fileName,"r"); 
+    char fileName[45];
+    strcpy(fileName,getFilePath(SCHEME_DB_PATH));
+
+    FILE *input = fopen(fileName,"rb"); 
+    if(input == NULL)
+    {
+        printf("Scheme Catlog Does not exist ...!\n");
+        return -1;
+    }
 	fseek(input,0,SEEK_END);
 	countChars = ftell(input);	
-	fclose(input); 
-	
+	fclose(input); 	
 	countObjects = countChars / (int)sizeof(scheme);
 	return countObjects;
 }
