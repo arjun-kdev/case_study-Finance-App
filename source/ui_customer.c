@@ -48,7 +48,7 @@ void updateProfile()
     printf("Below fields only permitted to update :\n\n");
     printf("Select the field you want to update :\n\n");
     int opt = -1;
-    printf("1.Name\n2.number\n3.password\n");
+    printf("1.Name\n2.number\n3.password\n\n");
     scanf("%d", &opt);
     customer customerObject = {};
 	customer_bdb_readByEmail(&customerObject, customerLoggedIn->username);
@@ -60,7 +60,7 @@ void updateProfile()
         printf("\n");
         break;
     case 2:
-        printf("\tEnter newnumber : ");
+        printf("\tEnter new number : ");
         scanf("%s", customerObject.phoneNumber);
         printf("\n");
         break;
@@ -71,6 +71,7 @@ void updateProfile()
         break;
     }
     update_customer_bdb_update_intoFile(&customerObject, customerLoggedIn->username);
+    printf("customer profile updated ..!!");
 }
 
 void applyForLoan()
