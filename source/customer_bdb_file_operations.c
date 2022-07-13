@@ -81,7 +81,7 @@ void update_customer_bdb_update_intoFile(customer* customerAddr, char customerEm
         return;
     }
 	
-    while(fread(&sch,1,sizeof(cust),in)){
+    while(fread(&cust,1,sizeof(cust),in)){
         i++;
          if(strcmp(cust.email, customerEmailAddr) == 0){       
               break;

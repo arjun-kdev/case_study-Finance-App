@@ -51,6 +51,7 @@ void updateProfile()
     printf("1.Name\n2.number\n3.password\n");
     scanf("%d", &opt);
     customer customerObject = {};
+	customer_bdb_readByEmail(&customerObject, customerLoggedIn->username);
     switch (opt)
     {
     case 1:
