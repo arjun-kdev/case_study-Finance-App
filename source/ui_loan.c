@@ -228,6 +228,7 @@ void release_loan()
 		releaseLoan.releaseDate.year = dob.year;
     	appObj.status = PROCESSED;
         loan_application_bdb_update(appObj);
+        release_loan_application_bdb_insert(releaseLoan);
     }
 
     printf("\n\tApplication is processed successfully.\n");

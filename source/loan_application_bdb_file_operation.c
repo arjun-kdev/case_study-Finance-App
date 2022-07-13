@@ -23,6 +23,23 @@ void loan_application_bdb_insert(application *applicationAddr)
     fclose(out);
 }
 
+void release_loan_application_bdb_insert(releaseLoan *releaseloanAddr)
+{
+
+    char fileName[45];
+    strcpy(fileName,getFilePath(RELASE_LOAN_DB_PATH));
+
+    FILE* out = fopen(fileName,"ab");
+    if(out == NULL){
+        printf("FILE ERROR.\n");
+        return;
+    }
+    
+    fwrite(releaseloanAddr,1,sizeof(releaseLoan),out);
+
+    fclose(out);
+}
+
 void loan_application_bdb_readAll(application *loanApplicationList,int *noOfObjects)
 {
     int I=0;
