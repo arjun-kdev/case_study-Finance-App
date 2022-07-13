@@ -4,3 +4,4 @@
 void employee_bdb_readall(employee *employeeHeadAddr,int *employeeCount);
 void add_employee_intoFile(employee *employeeAddr);
 void validate(char username[], char pass[]);
+int employee_bdb_count();

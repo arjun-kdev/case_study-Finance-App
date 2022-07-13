@@ -7,6 +7,8 @@ int loan_application_bdb_readByName(application* loanApplicationAddr, char appli
 int loan_application_bdb_readByEmail(application* loanApplicationAddr, char applicationCustEmailAddr[]);
 void loan_application_bdb_update(application applicationAddr);
 int loan_application_bdb_count();
+int loan_application_bdb_readByNameAndStatus(application* loanApplicationAddr, char applicationCustNameAddr[]);
+
 
 
 

@@ -7,3 +7,4 @@ void displayCustomerObject(customer customerObject, int Index);
 void dologin_customer(login *loginAddr);
 void applyForLoan();
 void readAllCustomers();
+void registrationForCustomer();

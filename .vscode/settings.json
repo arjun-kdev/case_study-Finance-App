@@ -11,6 +11,9 @@
         "login_file_operations.h": "c",
         "loan_application_bdb_file_operation.h": "c",
         "util.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "generic_enums.h": "c",
+        "customer_file_operations.h": "c",
+        "ui_employee.h": "c"
     }
 }

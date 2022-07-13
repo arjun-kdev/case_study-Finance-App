@@ -7,14 +7,15 @@ char schemeName[120];
 double maxLoanAmt;
 float interestRate;
 int tenure;// 45 months
-}; 
+}__attribute__((__packed__)); 
 typedef struct scheme_ scheme;
 
 typedef struct _DOB_t
 {
-	int day;
-	int month;
+	int day;	
 	int year;
+	int month;
+
 }DOB_t;
 
 struct customer_
@@ -27,9 +28,10 @@ struct customer_
 	char panCard[16];
 	char customerID[32];
 	char password[32];
-	int  preferredAccountType;
 	char address[256];
-  	DOB_t DOB;
+	int  preferredAccountType;
+	DOB_t DOB;
+
   	
 }__attribute__((__packed__));
 
@@ -53,10 +55,10 @@ struct application_
 	scheme SCHEME;
 	customer CUSTOMER;
 	double EMI;
-	//char status[128];
-	int status:4;
 	int applicationId;
-}; 
+	int status:4;
+}__attribute__((__packed__)); 
+
 typedef struct application_ application;
 
 struct releaseLoan_
@@ -64,5 +66,5 @@ struct releaseLoan_
 	application APPLICATION;
 	double releaseAmount;
 	DOB_t releaseDate;
-}; 
+}__attribute__((__packed__)); 
 typedef struct releaseLoan_ releaseLoan;

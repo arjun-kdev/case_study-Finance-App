@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 12 10:31:10 2022
+# Make data base, printed on Wed Jul 13 09:21:19 2022
 
 # Variables
 
@@ -49,7 +47,7 @@ SNAP_DATA = /var/snap/code/100
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:34325
+JOURNAL_STREAM = 8:34237
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -71,7 +69,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 _ = /snap/code/100/usr/share/code/code
 # environment
-MANAGERPID = 1210
+MANAGERPID = 1211
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -85,7 +83,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/quest-VirtualBox:@/tmp/.ICE-unix/1457,unix/quest-VirtualBox:/tmp/.ICE-unix/1457
+SESSION_MANAGER = local/quest-VirtualBox:@/tmp/.ICE-unix/1458,unix/quest-VirtualBox:/tmp/.ICE-unix/1458
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -101,7 +99,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 2f29ca8b3a7b405296ac4c9bdb957b92
+INVOCATION_ID = d0b48a99d7954f4499f373db7fc9cfa5
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/100/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -113,7 +111,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2791
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2863
 # automatic
 %F = $(notdir $%)
 # environment
@@ -125,7 +123,7 @@ PWD = /home/quest/Documents/11july/case_study-Finance-App
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1418
+SSH_AGENT_PID = 1420
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -243,7 +241,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2834
+VSCODE_PID = 2905
 # variable set hash-table stats:
 # Load=116/1024=11%, Rehash=0, Collisions=17/138=12%
 
@@ -253,9 +251,9 @@ VSCODE_PID = 2834
 
 # Directories
 
-# . (device 2053, inode 657529): 10 files, no impossibilities.
+# . (device 2053, inode 657529): 11 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -282,6 +280,8 @@ makefile:
 #  Implicit rule search has been done.
 #  File does not exist.
  
+make: *** No rule to make target 'all'.  Stop.
+
 #  File has been updated.
 #  Failed to be updated.
 
@@ -306,12 +306,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 146 B / avg = 8 B
-# current buf: size = 8162 B / used = 146 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 149 B / avg = 7 B
+# current buf: size = 8162 B / used = 149 B / count = 19 / avg = 7 B
 
-# strcache performance: lookups = 21 / hit rate = 14%
+# strcache performance: lookups = 22 / hit rate = 13%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Tue Jul 12 10:31:10 2022
+# Load=19/8192=0%, Rehash=0, Collisions=1/22=5%
+# Finished Make data base on Wed Jul 13 09:21:19 2022
 
  

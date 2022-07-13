@@ -2,6 +2,6 @@
 struct login_
 {
     char pass[16];
-    char username[128];
+    char username[32];
 };
 typedef struct login_ login;

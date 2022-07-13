@@ -73,7 +73,7 @@ void process_loan()
     printf("\n\tEnter Customer Name to find: ");
     scanf("%s", custName);
     int isCustomerFound = loan_application_bdb_readByName(&appObj, custName);
-    if (isCustomerFound == 1)
+    if (isCustomerFound == 1 && appObj.status == PENDING)
     {
         printf("\n\n\nThe searched customer Application:\n");
         printf("\tCustomer Name :%s", appObj.CUSTOMER.accHolderName);

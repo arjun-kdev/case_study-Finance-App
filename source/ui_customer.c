@@ -284,3 +284,45 @@ void readAllCustomers()
     customer_bdb_readall(customer, &noOfcustomerObject);
     displayAllCustomerObjects(customer, noOfcustomerObject);
 }
+
+void registrationForCustomer()
+{
+    customer customerObject = {};
+    printf("\tEnter name : ");
+    scanf("%s", customerObject.accHolderName);
+    printf("\n");
+    printf("\tEnter number : ");
+    scanf("%s", customerObject.phoneNumber);
+    printf("\n");
+    printf("\tEnter Gender (M/F/T) : ");
+    clear_buffer();
+    scanf("%c", &customerObject.gender);
+    printf("\n");
+    printf("\tEnter e-mail : ");
+    scanf("%s", customerObject.email);
+    printf("\n");
+    printf("\tEnter Aadhar-ID : ");
+    scanf("%s", customerObject.aadhaarID);
+    printf("\n");
+    printf("\tEnter PAN number : ");
+    scanf("%s", customerObject.panCard);
+    printf("\n");
+    printf("\tEnter Password : ");
+    scanf("%s", customerObject.password);
+    printf("\n");
+    printf("\tEnter Account type : ");
+    clear_buffer();
+    scanf("%d", &customerObject.preferredAccountType);
+    printf("\n");
+    printf("\tEnter Address : ");
+    scanf("%s", customerObject.address);
+    printf("\n");
+    char dateOfBirth[20];
+    printf("\tEnter date of birth(format dd-MM-yyyy):");
+    scanf("%s", dateOfBirth);
+    sscanf(dateOfBirth, "%02d-%02d-%04d",
+           &customerObject.DOB.day,
+           &customerObject.DOB.month,
+           &customerObject.DOB.year);
+    add_customer_intoFile(&customerObject);
+}
