@@ -52,7 +52,7 @@ void displayAdminMenu()
             process_loan();
         }
         
-        else if (2 == menu)
+        else if (3 == menu)
         {
             release_loan();
         }

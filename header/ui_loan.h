@@ -5,3 +5,4 @@
 void displayAllLoanApplicationObjects(application *applicationAddr, int applicationCount);
 void displayLoanApplicationObject(application loanApplicationObject,int Index);
 void process_loan();
+void release_loan();
